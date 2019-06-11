@@ -118,33 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="stickmanwave" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\stickmanwave.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  
   <data name="transparent_runner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\transparent_runner.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="platform" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\platform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="stickman_running" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\stickman_running.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+
   <data name="transparent_wave" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\transparent_wave.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="batman" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\batman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+ 
   <data name="background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="stick runner" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\stick runner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="stick waiting" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\stick waiting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+
   <data name="transparent_runner1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\transparent_runner.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
