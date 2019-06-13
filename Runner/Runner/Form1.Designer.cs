@@ -29,49 +29,55 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.floor = new System.Windows.Forms.PictureBox();
+            this.floor2 = new System.Windows.Forms.PictureBox();
             this.btnPlay = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblHighScore = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.floor2 = new System.Windows.Forms.PictureBox();
             this.lblScore = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblCenterHighScore = new System.Windows.Forms.Label();
-            this.lblCenterScore = new System.Windows.Forms.Label();
-            this.pictureBoxCoin1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxCoin2 = new System.Windows.Forms.PictureBox();
+            this.btnNewGame = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.floor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.floor2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoin1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoin2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // floor
             // 
             this.floor.BackgroundImage = global::Runner.Properties.Resources.platform;
             this.floor.Image = global::Runner.Properties.Resources.platform;
-            this.floor.Location = new System.Drawing.Point(0, 465);
-            this.floor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.floor.Location = new System.Drawing.Point(-1, 327);
+            this.floor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.floor.Name = "floor";
-            this.floor.Size = new System.Drawing.Size(380, 50);
+            this.floor.Size = new System.Drawing.Size(227, 41);
             this.floor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.floor.TabIndex = 0;
             this.floor.TabStop = false;
+            // 
+            // floor2
+            // 
+            this.floor2.BackgroundImage = global::Runner.Properties.Resources.platform;
+            this.floor2.Image = global::Runner.Properties.Resources.platform;
+            this.floor2.Location = new System.Drawing.Point(363, 327);
+            this.floor2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.floor2.Name = "floor2";
+            this.floor2.Size = new System.Drawing.Size(224, 41);
+            this.floor2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.floor2.TabIndex = 1;
+            this.floor2.TabStop = false;
             // 
             // btnPlay
             // 
             this.btnPlay.BackColor = System.Drawing.Color.SeaShell;
             this.btnPlay.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlay.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnPlay.Location = new System.Drawing.Point(377, 200);
-            this.btnPlay.Margin = new System.Windows.Forms.Padding(5);
+            this.btnPlay.Location = new System.Drawing.Point(242, 132);
+            this.btnPlay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(228, 65);
+            this.btnPlay.Size = new System.Drawing.Size(113, 41);
             this.btnPlay.TabIndex = 2;
             this.btnPlay.Text = "PLAY";
             this.btnPlay.UseVisualStyleBackColor = false;
@@ -87,139 +93,100 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(9, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 17);
+            this.label1.Size = new System.Drawing.Size(56, 14);
             this.label1.TabIndex = 3;
-            this.label1.Text = "High Score: ";
+            this.label1.Text = "Score: ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(759, 9);
+            this.label2.Location = new System.Drawing.Point(412, 7);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(200, 17);
+            this.label2.Size = new System.Drawing.Size(175, 14);
             this.label2.TabIndex = 4;
             this.label2.Text = "Press P or Esc for pause";
-            // 
-            // lblHighScore
-            // 
-            this.lblHighScore.AutoSize = true;
-            this.lblHighScore.BackColor = System.Drawing.Color.Transparent;
-            this.lblHighScore.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHighScore.Location = new System.Drawing.Point(109, 9);
-            this.lblHighScore.Name = "lblHighScore";
-            this.lblHighScore.Size = new System.Drawing.Size(16, 17);
-            this.lblHighScore.TabIndex = 5;
-            this.lblHighScore.Text = "0";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::Runner.Properties.Resources.transparent_runner;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 345);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(88, 120);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
-            // floor2
-            // 
-            this.floor2.BackgroundImage = global::Runner.Properties.Resources.platform;
-            this.floor2.Image = global::Runner.Properties.Resources.platform;
-            this.floor2.Location = new System.Drawing.Point(602, 465);
-            this.floor2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.floor2.Name = "floor2";
-            this.floor2.Size = new System.Drawing.Size(380, 50);
-            this.floor2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.floor2.TabIndex = 1;
-            this.floor2.TabStop = false;
             // 
             // lblScore
             // 
             this.lblScore.AutoSize = true;
             this.lblScore.BackColor = System.Drawing.Color.Transparent;
             this.lblScore.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore.Location = new System.Drawing.Point(72, 38);
+            this.lblScore.Location = new System.Drawing.Point(62, 7);
+            this.lblScore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(16, 17);
-            this.lblScore.TabIndex = 11;
+            this.lblScore.Size = new System.Drawing.Size(14, 14);
+            this.lblScore.TabIndex = 5;
             this.lblScore.Text = "0";
             // 
-            // label4
+            // btnNewGame
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 38);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 17);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Score: ";
+            this.btnNewGame.BackColor = System.Drawing.Color.SeaShell;
+            this.btnNewGame.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewGame.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnNewGame.Location = new System.Drawing.Point(215, 183);
+            this.btnNewGame.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNewGame.Name = "btnNewGame";
+            this.btnNewGame.Size = new System.Drawing.Size(80, 29);
+            this.btnNewGame.TabIndex = 6;
+            this.btnNewGame.Text = "New Game";
+            this.btnNewGame.UseVisualStyleBackColor = false;
             // 
-            // lblCenterHighScore
+            // btnSave
             // 
-            this.lblCenterHighScore.AutoSize = true;
-            this.lblCenterHighScore.BackColor = System.Drawing.Color.Transparent;
-            this.lblCenterHighScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCenterHighScore.Location = new System.Drawing.Point(359, 71);
-            this.lblCenterHighScore.Name = "lblCenterHighScore";
-            this.lblCenterHighScore.Size = new System.Drawing.Size(270, 45);
-            this.lblCenterHighScore.TabIndex = 12;
-            this.lblCenterHighScore.Text = "High Score";
+            this.btnSave.BackColor = System.Drawing.Color.SeaShell;
+            this.btnSave.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnSave.Location = new System.Drawing.Point(302, 183);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(80, 29);
+            this.btnSave.TabIndex = 7;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
             // 
-            // lblCenterScore
+            // btnOpen
             // 
-            this.lblCenterScore.AutoSize = true;
-            this.lblCenterScore.BackColor = System.Drawing.Color.Transparent;
-            this.lblCenterScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCenterScore.Location = new System.Drawing.Point(471, 134);
-            this.lblCenterScore.Name = "lblCenterScore";
-            this.lblCenterScore.Size = new System.Drawing.Size(45, 45);
-            this.lblCenterScore.TabIndex = 13;
-            this.lblCenterScore.Text = "0";
+            this.btnOpen.BackColor = System.Drawing.Color.SeaShell;
+            this.btnOpen.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpen.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnOpen.Location = new System.Drawing.Point(253, 220);
+            this.btnOpen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(95, 32);
+            this.btnOpen.TabIndex = 8;
+            this.btnOpen.Text = "Open Game";
+            this.btnOpen.UseVisualStyleBackColor = false;
             // 
-            // pictureBoxCoin1
+            // pictureBox1
             // 
-            this.pictureBoxCoin1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxCoin1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCoin1.Image")));
-            this.pictureBoxCoin1.Location = new System.Drawing.Point(459, 290);
-            this.pictureBoxCoin1.Name = "pictureBoxCoin1";
-            this.pictureBoxCoin1.Size = new System.Drawing.Size(57, 49);
-            this.pictureBoxCoin1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCoin1.TabIndex = 14;
-            this.pictureBoxCoin1.TabStop = false;
-            // 
-            // pictureBoxCoin2
-            // 
-            this.pictureBoxCoin2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxCoin2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCoin2.Image")));
-            this.pictureBoxCoin2.Location = new System.Drawing.Point(1100, 290);
-            this.pictureBoxCoin2.Name = "pictureBoxCoin2";
-            this.pictureBoxCoin2.Size = new System.Drawing.Size(57, 49);
-            this.pictureBoxCoin2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCoin2.TabIndex = 15;
-            this.pictureBoxCoin2.TabStop = false;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::Runner.Properties.Resources.transparent_runner;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 241);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(66, 91);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Runner.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(982, 508);
-            this.Controls.Add(this.pictureBoxCoin2);
-            this.Controls.Add(this.pictureBoxCoin1);
-            this.Controls.Add(this.lblCenterScore);
-            this.Controls.Add(this.lblCenterHighScore);
-            this.Controls.Add(this.lblScore);
-            this.Controls.Add(this.label4);
+            this.ClientSize = new System.Drawing.Size(586, 368);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lblHighScore);
+            this.Controls.Add(this.btnOpen);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnNewGame);
+            this.Controls.Add(this.lblScore);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPlay);
@@ -227,20 +194,15 @@
             this.Controls.Add(this.floor);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximumSize = new System.Drawing.Size(1000, 555);
-            this.MinimumSize = new System.Drawing.Size(1000, 555);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.floor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.floor2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoin1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoin2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,19 +211,16 @@
         #endregion
 
         private System.Windows.Forms.PictureBox floor;
+        private System.Windows.Forms.PictureBox floor2;
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblHighScore;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox floor2;
         private System.Windows.Forms.Label lblScore;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblCenterHighScore;
-        private System.Windows.Forms.Label lblCenterScore;
-        private System.Windows.Forms.PictureBox pictureBoxCoin1;
-        private System.Windows.Forms.PictureBox pictureBoxCoin2;
+        private System.Windows.Forms.Button btnNewGame;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
