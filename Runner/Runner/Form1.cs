@@ -26,6 +26,7 @@ namespace Runner
         public Form1()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
             player = new Player();
             player.center = pictureBox1.Location;
             timerJump.Stop();
@@ -50,8 +51,17 @@ namespace Runner
 
         private void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            if (!inJump && (e.KeyCode == Keys.Up || Keyboard.IsKeyDown(Key.Up) && Keyboard.IsKeyDown(Key.Right)))
+            if (Keyboard.IsKeyDown(Key.Left))
             {
+                player.moveLeft();
+            }
+            else if (Keyboard.IsKeyDown(Key.Right))
+            {
+                player.moveRight(Width);
+            }
+            if(!inJump && Keyboard.IsKeyDown(Key.Up))
+            {
+                inJump = !inJump;
                 timerJump.Start();
             }
 
@@ -60,18 +70,11 @@ namespace Runner
                 timer1.Enabled = false;
                 buttonVisible(true);
             }
-            else if (e.KeyCode == Keys.Right)
-            {
-                player.moveRight(Width);
-            }else if (e.KeyCode == Keys.Left)
-            {
-                player.moveLeft();
-            } 
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Invalidate(true);
+            //Invalidate(true);
             pictureBox1.Location = player.center;
         }
 
@@ -87,7 +90,13 @@ namespace Runner
             if (!player.isInJump())
             {
                 timerJump.Stop();
+                inJump = false;
             }
+        }
+
+        private void Form1_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            Form1_KeyDown(sender, e);
         }
     }
 }

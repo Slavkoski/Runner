@@ -105,7 +105,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(669, 9);
+            this.label2.Location = new System.Drawing.Point(744, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(200, 17);
             this.label2.TabIndex = 4;
@@ -168,7 +168,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(2, 403);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(88, 112);
+            this.pictureBox1.Size = new System.Drawing.Size(88, 108);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -201,6 +201,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.floor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.floor2)).EndInit();
