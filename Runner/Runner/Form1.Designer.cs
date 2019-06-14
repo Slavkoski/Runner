@@ -123,11 +123,11 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::Runner.Properties.Resources.transparent_runner;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 345);
+            this.pictureBox1.Location = new System.Drawing.Point(40, 345);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(88, 120);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
@@ -191,9 +191,9 @@
             // 
             this.pictureBoxCoin1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxCoin1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCoin1.Image")));
-            this.pictureBoxCoin1.Location = new System.Drawing.Point(459, 290);
+            this.pictureBoxCoin1.Location = new System.Drawing.Point(474, 307);
             this.pictureBoxCoin1.Name = "pictureBoxCoin1";
-            this.pictureBoxCoin1.Size = new System.Drawing.Size(57, 49);
+            this.pictureBoxCoin1.Size = new System.Drawing.Size(42, 39);
             this.pictureBoxCoin1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCoin1.TabIndex = 14;
             this.pictureBoxCoin1.TabStop = false;
@@ -267,6 +267,8 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Runner";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
