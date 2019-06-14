@@ -86,6 +86,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="images\background.png" />
+    <Content Include="images\coin.png" />
     <Content Include="images\platform.png" />
     <None Include="images\transparent_wave.gif" />
     <None Include="images\transparent_runner.gif" />
