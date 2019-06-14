@@ -44,11 +44,15 @@
             this.lblCenterScore = new System.Windows.Forms.Label();
             this.pictureBoxCoin1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxCoin2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCactus1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCactus2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.floor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.floor2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoin1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoin2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCactus1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCactus2)).BeginInit();
             this.SuspendLayout();
             // 
             // floor
@@ -79,7 +83,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 20;
+            this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label1
@@ -205,6 +209,32 @@
             this.pictureBoxCoin2.TabIndex = 15;
             this.pictureBoxCoin2.TabStop = false;
             // 
+            // pictureBoxCactus1
+            // 
+            this.pictureBoxCactus1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxCactus1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCactus1.Image")));
+            this.pictureBoxCactus1.Location = new System.Drawing.Point(112, 427);
+            this.pictureBoxCactus1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxCactus1.Name = "pictureBoxCactus1";
+            this.pictureBoxCactus1.Size = new System.Drawing.Size(26, 38);
+            this.pictureBoxCactus1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCactus1.TabIndex = 17;
+            this.pictureBoxCactus1.TabStop = false;
+            this.pictureBoxCactus1.Visible = false;
+            // 
+            // pictureBoxCactus2
+            // 
+            this.pictureBoxCactus2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxCactus2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCactus2.Image")));
+            this.pictureBoxCactus2.Location = new System.Drawing.Point(805, 427);
+            this.pictureBoxCactus2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxCactus2.Name = "pictureBoxCactus2";
+            this.pictureBoxCactus2.Size = new System.Drawing.Size(26, 38);
+            this.pictureBoxCactus2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCactus2.TabIndex = 18;
+            this.pictureBoxCactus2.TabStop = false;
+            this.pictureBoxCactus2.Visible = false;
+            // 
             // Form1
             // 
             this.AcceptButton = this.btnPlay;
@@ -213,6 +243,8 @@
             this.BackgroundImage = global::Runner.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(982, 508);
+            this.Controls.Add(this.pictureBoxCactus2);
+            this.Controls.Add(this.pictureBoxCactus1);
             this.Controls.Add(this.pictureBoxCoin2);
             this.Controls.Add(this.pictureBoxCoin1);
             this.Controls.Add(this.lblCenterScore);
@@ -235,7 +267,6 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Runner";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
@@ -244,6 +275,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.floor2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoin1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoin2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCactus1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCactus2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,6 +298,8 @@
         private System.Windows.Forms.Label lblCenterScore;
         private System.Windows.Forms.PictureBox pictureBoxCoin1;
         private System.Windows.Forms.PictureBox pictureBoxCoin2;
+        private System.Windows.Forms.PictureBox pictureBoxCactus1;
+        private System.Windows.Forms.PictureBox pictureBoxCactus2;
     }
 }
 
