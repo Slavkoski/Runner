@@ -15,7 +15,7 @@ namespace Runner
 {
     public partial class Form1 : Form
     {
-        
+        public static int MOVE_DISTANCE=10;   
         private bool jump;
         private bool isJumping;
         private bool right;
@@ -255,12 +255,12 @@ namespace Runner
 
         public void moveRight()
         {
-            floor.Location = new Point(floor.Location.X - 7, floor.Location.Y);
-            floor2.Location = new Point(floor2.Location.X - 7, floor2.Location.Y);
-            pictureBoxCoin1.Location = new Point(pictureBoxCoin1.Location.X - 7, pictureBoxCoin1.Location.Y);
-            pictureBoxCoin2.Location = new Point(pictureBoxCoin2.Location.X - 7, pictureBoxCoin2.Location.Y);
-            pictureBoxCactus2.Location = new Point(pictureBoxCactus2.Location.X - 7, pictureBoxCactus2.Location.Y);
-            pictureBoxCactus1.Location = new Point(pictureBoxCactus1.Location.X - 7, pictureBoxCactus1.Location.Y);
+            floor.Location = new Point(floor.Location.X - MOVE_DISTANCE, floor.Location.Y);
+            floor2.Location = new Point(floor2.Location.X - MOVE_DISTANCE, floor2.Location.Y);
+            pictureBoxCoin1.Location = new Point(pictureBoxCoin1.Location.X - MOVE_DISTANCE, pictureBoxCoin1.Location.Y);
+            pictureBoxCoin2.Location = new Point(pictureBoxCoin2.Location.X - MOVE_DISTANCE, pictureBoxCoin2.Location.Y);
+            pictureBoxCactus2.Location = new Point(pictureBoxCactus2.Location.X - MOVE_DISTANCE, pictureBoxCactus2.Location.Y);
+            pictureBoxCactus1.Location = new Point(pictureBoxCactus1.Location.X - MOVE_DISTANCE, pictureBoxCactus1.Location.Y);
             if (Score == 6)
             {
                 pictureBoxCactus1.Visible = true;
