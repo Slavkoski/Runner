@@ -1,6 +1,6 @@
 ﻿namespace Runner
 {
-    partial class Form1
+    partial class formRunner
     {
         /// <summary>
         /// Required designer variable.
@@ -29,45 +29,42 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.floor = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formRunner));
+            this.pbFloor1 = new System.Windows.Forms.PictureBox();
             this.btnPlay = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblForHighScore = new System.Windows.Forms.Label();
             this.lblHighScore = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.floor2 = new System.Windows.Forms.PictureBox();
+            this.pbPlayer = new System.Windows.Forms.PictureBox();
+            this.pbFloor2 = new System.Windows.Forms.PictureBox();
             this.lblScore = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblForScore = new System.Windows.Forms.Label();
+            this.lbForlCenterHighScore = new System.Windows.Forms.Label();
             this.lblCenterHighScore = new System.Windows.Forms.Label();
-            this.lblCenterScore = new System.Windows.Forms.Label();
-            this.pictureBoxCoin1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxCoin2 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxCactus1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxCactus2 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.floor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.floor2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoin1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoin2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCactus1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCactus2)).BeginInit();
+            this.pbCoin1 = new System.Windows.Forms.PictureBox();
+            this.pbCoin2 = new System.Windows.Forms.PictureBox();
+            this.pbCactus1 = new System.Windows.Forms.PictureBox();
+            this.pbCactus2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFloor1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFloor2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCoin1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCoin2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCactus1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCactus2)).BeginInit();
             this.SuspendLayout();
             // 
-            // floor
+            // pbFloor1
             // 
-            this.floor.BackgroundImage = global::Runner.Properties.Resources.platform;
-            this.floor.Image = global::Runner.Properties.Resources.platform;
-            this.floor.Location = new System.Drawing.Point(0, 465);
-            this.floor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.floor.Name = "floor";
-            this.floor.Size = new System.Drawing.Size(380, 50);
-            this.floor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.floor.TabIndex = 0;
-            this.floor.TabStop = false;
+            this.pbFloor1.BackgroundImage = global::Runner.Properties.Resources.platform;
+            this.pbFloor1.Image = global::Runner.Properties.Resources.platform;
+            this.pbFloor1.Location = new System.Drawing.Point(0, 465);
+            this.pbFloor1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbFloor1.Name = "pbFloor1";
+            this.pbFloor1.Size = new System.Drawing.Size(380, 50);
+            this.pbFloor1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFloor1.TabIndex = 0;
+            this.pbFloor1.TabStop = false;
             // 
             // btnPlay
             // 
@@ -88,27 +85,16 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label1
+            // lblForHighScore
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "High Score: ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(704, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(200, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Press P or Esc for pause";
+            this.lblForHighScore.AutoSize = true;
+            this.lblForHighScore.BackColor = System.Drawing.Color.Transparent;
+            this.lblForHighScore.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblForHighScore.Location = new System.Drawing.Point(12, 9);
+            this.lblForHighScore.Name = "lblForHighScore";
+            this.lblForHighScore.Size = new System.Drawing.Size(104, 17);
+            this.lblForHighScore.TabIndex = 3;
+            this.lblForHighScore.Text = "High Score: ";
             // 
             // lblHighScore
             // 
@@ -121,30 +107,30 @@
             this.lblHighScore.TabIndex = 5;
             this.lblHighScore.Text = "0";
             // 
-            // pictureBox1
+            // pbPlayer
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::Runner.Properties.Resources.transparent_runner;
-            this.pictureBox1.Location = new System.Drawing.Point(40, 345);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(88, 120);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
+            this.pbPlayer.BackColor = System.Drawing.Color.Transparent;
+            this.pbPlayer.Image = global::Runner.Properties.Resources.transparent_runner;
+            this.pbPlayer.Location = new System.Drawing.Point(40, 345);
+            this.pbPlayer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbPlayer.Name = "pbPlayer";
+            this.pbPlayer.Size = new System.Drawing.Size(88, 120);
+            this.pbPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPlayer.TabIndex = 9;
+            this.pbPlayer.TabStop = false;
+            this.pbPlayer.Visible = false;
             // 
-            // floor2
+            // pbFloor2
             // 
-            this.floor2.BackgroundImage = global::Runner.Properties.Resources.platform;
-            this.floor2.Image = global::Runner.Properties.Resources.platform;
-            this.floor2.Location = new System.Drawing.Point(602, 465);
-            this.floor2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.floor2.Name = "floor2";
-            this.floor2.Size = new System.Drawing.Size(380, 50);
-            this.floor2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.floor2.TabIndex = 1;
-            this.floor2.TabStop = false;
+            this.pbFloor2.BackgroundImage = global::Runner.Properties.Resources.platform;
+            this.pbFloor2.Image = global::Runner.Properties.Resources.platform;
+            this.pbFloor2.Location = new System.Drawing.Point(602, 465);
+            this.pbFloor2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbFloor2.Name = "pbFloor2";
+            this.pbFloor2.Size = new System.Drawing.Size(380, 50);
+            this.pbFloor2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFloor2.TabIndex = 1;
+            this.pbFloor2.TabStop = false;
             // 
             // lblScore
             // 
@@ -157,110 +143,88 @@
             this.lblScore.TabIndex = 11;
             this.lblScore.Text = "0";
             // 
-            // label4
+            // lblForScore
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 38);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 17);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Score: ";
+            this.lblForScore.AutoSize = true;
+            this.lblForScore.BackColor = System.Drawing.Color.Transparent;
+            this.lblForScore.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblForScore.Location = new System.Drawing.Point(12, 38);
+            this.lblForScore.Name = "lblForScore";
+            this.lblForScore.Size = new System.Drawing.Size(64, 17);
+            this.lblForScore.TabIndex = 10;
+            this.lblForScore.Text = "Score: ";
+            // 
+            // lbForlCenterHighScore
+            // 
+            this.lbForlCenterHighScore.AutoSize = true;
+            this.lbForlCenterHighScore.BackColor = System.Drawing.Color.Transparent;
+            this.lbForlCenterHighScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbForlCenterHighScore.Location = new System.Drawing.Point(348, 69);
+            this.lbForlCenterHighScore.Name = "lbForlCenterHighScore";
+            this.lbForlCenterHighScore.Size = new System.Drawing.Size(270, 45);
+            this.lbForlCenterHighScore.TabIndex = 12;
+            this.lbForlCenterHighScore.Text = "High Score";
             // 
             // lblCenterHighScore
             // 
             this.lblCenterHighScore.AutoSize = true;
             this.lblCenterHighScore.BackColor = System.Drawing.Color.Transparent;
             this.lblCenterHighScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCenterHighScore.Location = new System.Drawing.Point(348, 69);
+            this.lblCenterHighScore.Location = new System.Drawing.Point(460, 132);
             this.lblCenterHighScore.Name = "lblCenterHighScore";
-            this.lblCenterHighScore.Size = new System.Drawing.Size(270, 45);
-            this.lblCenterHighScore.TabIndex = 12;
-            this.lblCenterHighScore.Text = "High Score";
+            this.lblCenterHighScore.Size = new System.Drawing.Size(45, 45);
+            this.lblCenterHighScore.TabIndex = 13;
+            this.lblCenterHighScore.Text = "0";
             // 
-            // lblCenterScore
+            // pbCoin1
             // 
-            this.lblCenterScore.AutoSize = true;
-            this.lblCenterScore.BackColor = System.Drawing.Color.Transparent;
-            this.lblCenterScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCenterScore.Location = new System.Drawing.Point(460, 132);
-            this.lblCenterScore.Name = "lblCenterScore";
-            this.lblCenterScore.Size = new System.Drawing.Size(45, 45);
-            this.lblCenterScore.TabIndex = 13;
-            this.lblCenterScore.Text = "0";
+            this.pbCoin1.BackColor = System.Drawing.Color.Transparent;
+            this.pbCoin1.Image = ((System.Drawing.Image)(resources.GetObject("pbCoin1.Image")));
+            this.pbCoin1.Location = new System.Drawing.Point(474, 270);
+            this.pbCoin1.Name = "pbCoin1";
+            this.pbCoin1.Size = new System.Drawing.Size(42, 39);
+            this.pbCoin1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbCoin1.TabIndex = 14;
+            this.pbCoin1.TabStop = false;
             // 
-            // pictureBoxCoin1
+            // pbCoin2
             // 
-            this.pictureBoxCoin1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxCoin1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCoin1.Image")));
-            this.pictureBoxCoin1.Location = new System.Drawing.Point(474, 270);
-            this.pictureBoxCoin1.Name = "pictureBoxCoin1";
-            this.pictureBoxCoin1.Size = new System.Drawing.Size(42, 39);
-            this.pictureBoxCoin1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCoin1.TabIndex = 14;
-            this.pictureBoxCoin1.TabStop = false;
+            this.pbCoin2.BackColor = System.Drawing.Color.Transparent;
+            this.pbCoin2.Image = ((System.Drawing.Image)(resources.GetObject("pbCoin2.Image")));
+            this.pbCoin2.Location = new System.Drawing.Point(1120, 270);
+            this.pbCoin2.Name = "pbCoin2";
+            this.pbCoin2.Size = new System.Drawing.Size(42, 39);
+            this.pbCoin2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbCoin2.TabIndex = 15;
+            this.pbCoin2.TabStop = false;
             // 
-            // pictureBoxCoin2
+            // pbCactus1
             // 
-            this.pictureBoxCoin2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxCoin2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCoin2.Image")));
-            this.pictureBoxCoin2.Location = new System.Drawing.Point(1120, 270);
-            this.pictureBoxCoin2.Name = "pictureBoxCoin2";
-            this.pictureBoxCoin2.Size = new System.Drawing.Size(42, 39);
-            this.pictureBoxCoin2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCoin2.TabIndex = 15;
-            this.pictureBoxCoin2.TabStop = false;
+            this.pbCactus1.BackColor = System.Drawing.Color.Transparent;
+            this.pbCactus1.Image = ((System.Drawing.Image)(resources.GetObject("pbCactus1.Image")));
+            this.pbCactus1.Location = new System.Drawing.Point(112, 427);
+            this.pbCactus1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbCactus1.Name = "pbCactus1";
+            this.pbCactus1.Size = new System.Drawing.Size(26, 38);
+            this.pbCactus1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCactus1.TabIndex = 17;
+            this.pbCactus1.TabStop = false;
+            this.pbCactus1.Visible = false;
             // 
-            // pictureBoxCactus1
+            // pbCactus2
             // 
-            this.pictureBoxCactus1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxCactus1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCactus1.Image")));
-            this.pictureBoxCactus1.Location = new System.Drawing.Point(112, 427);
-            this.pictureBoxCactus1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBoxCactus1.Name = "pictureBoxCactus1";
-            this.pictureBoxCactus1.Size = new System.Drawing.Size(26, 38);
-            this.pictureBoxCactus1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCactus1.TabIndex = 17;
-            this.pictureBoxCactus1.TabStop = false;
-            this.pictureBoxCactus1.Visible = false;
+            this.pbCactus2.BackColor = System.Drawing.Color.Transparent;
+            this.pbCactus2.Image = ((System.Drawing.Image)(resources.GetObject("pbCactus2.Image")));
+            this.pbCactus2.Location = new System.Drawing.Point(805, 427);
+            this.pbCactus2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbCactus2.Name = "pbCactus2";
+            this.pbCactus2.Size = new System.Drawing.Size(26, 38);
+            this.pbCactus2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCactus2.TabIndex = 18;
+            this.pbCactus2.TabStop = false;
+            this.pbCactus2.Visible = false;
             // 
-            // pictureBoxCactus2
-            // 
-            this.pictureBoxCactus2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxCactus2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCactus2.Image")));
-            this.pictureBoxCactus2.Location = new System.Drawing.Point(805, 427);
-            this.pictureBoxCactus2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBoxCactus2.Name = "pictureBoxCactus2";
-            this.pictureBoxCactus2.Size = new System.Drawing.Size(26, 38);
-            this.pictureBoxCactus2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCactus2.TabIndex = 18;
-            this.pictureBoxCactus2.TabStop = false;
-            this.pictureBoxCactus2.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(704, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(184, 17);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Press Right -> to move";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(704, 38);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(232, 17);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Press Space or Up -> to jump";
-            // 
-            // Form1
+            // formRunner
             // 
             this.AcceptButton = this.btnPlay;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -268,23 +232,20 @@
             this.BackgroundImage = global::Runner.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(982, 508);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.pictureBoxCactus2);
-            this.Controls.Add(this.pictureBoxCactus1);
-            this.Controls.Add(this.pictureBoxCoin2);
-            this.Controls.Add(this.pictureBoxCoin1);
-            this.Controls.Add(this.lblCenterScore);
-            this.Controls.Add(this.lblCenterHighScore);
-            this.Controls.Add(this.lblScore);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lblHighScore);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPlay);
-            this.Controls.Add(this.floor2);
-            this.Controls.Add(this.floor);
+            this.Controls.Add(this.pbCoin1);
+            this.Controls.Add(this.pbCactus2);
+            this.Controls.Add(this.pbCactus1);
+            this.Controls.Add(this.pbCoin2);
+            this.Controls.Add(this.lblCenterHighScore);
+            this.Controls.Add(this.lbForlCenterHighScore);
+            this.Controls.Add(this.lblScore);
+            this.Controls.Add(this.lblForScore);
+            this.Controls.Add(this.pbPlayer);
+            this.Controls.Add(this.lblHighScore);
+            this.Controls.Add(this.lblForHighScore);
+            this.Controls.Add(this.pbFloor2);
+            this.Controls.Add(this.pbFloor1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -292,21 +253,20 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1000, 555);
             this.MinimumSize = new System.Drawing.Size(1000, 555);
-            this.Name = "Form1";
+            this.Name = "formRunner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Runner";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
-            ((System.ComponentModel.ISupportInitialize)(this.floor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.floor2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoin1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoin2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCactus1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCactus2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFloor1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFloor2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCoin1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCoin2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCactus1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCactus2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,24 +274,21 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox floor;
+        private System.Windows.Forms.PictureBox pbFloor1;
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblForHighScore;
         private System.Windows.Forms.Label lblHighScore;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox floor2;
+        private System.Windows.Forms.PictureBox pbPlayer;
+        private System.Windows.Forms.PictureBox pbFloor2;
         private System.Windows.Forms.Label lblScore;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblForScore;
+        private System.Windows.Forms.Label lbForlCenterHighScore;
         private System.Windows.Forms.Label lblCenterHighScore;
-        private System.Windows.Forms.Label lblCenterScore;
-        private System.Windows.Forms.PictureBox pictureBoxCoin1;
-        private System.Windows.Forms.PictureBox pictureBoxCoin2;
-        private System.Windows.Forms.PictureBox pictureBoxCactus1;
-        private System.Windows.Forms.PictureBox pictureBoxCactus2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pbCoin1;
+        private System.Windows.Forms.PictureBox pbCoin2;
+        private System.Windows.Forms.PictureBox pbCactus1;
+        private System.Windows.Forms.PictureBox pbCactus2;
     }
 }
 
