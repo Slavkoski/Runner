@@ -46,6 +46,8 @@
             this.pictureBoxCoin2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxCactus1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxCactus2 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.floor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.floor2)).BeginInit();
@@ -102,7 +104,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(743, 9);
+            this.label2.Location = new System.Drawing.Point(704, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(200, 17);
             this.label2.TabIndex = 4;
@@ -192,7 +194,7 @@
             // 
             this.pictureBoxCoin1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxCoin1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCoin1.Image")));
-            this.pictureBoxCoin1.Location = new System.Drawing.Point(474, 280);
+            this.pictureBoxCoin1.Location = new System.Drawing.Point(474, 270);
             this.pictureBoxCoin1.Name = "pictureBoxCoin1";
             this.pictureBoxCoin1.Size = new System.Drawing.Size(42, 39);
             this.pictureBoxCoin1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -203,7 +205,7 @@
             // 
             this.pictureBoxCoin2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxCoin2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCoin2.Image")));
-            this.pictureBoxCoin2.Location = new System.Drawing.Point(1120, 280);
+            this.pictureBoxCoin2.Location = new System.Drawing.Point(1120, 270);
             this.pictureBoxCoin2.Name = "pictureBoxCoin2";
             this.pictureBoxCoin2.Size = new System.Drawing.Size(42, 39);
             this.pictureBoxCoin2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -236,6 +238,28 @@
             this.pictureBoxCactus2.TabStop = false;
             this.pictureBoxCactus2.Visible = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(704, 69);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(184, 17);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Press Right -> to move";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(704, 38);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(232, 17);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Press Space or Up -> to jump";
+            // 
             // Form1
             // 
             this.AcceptButton = this.btnPlay;
@@ -244,6 +268,8 @@
             this.BackgroundImage = global::Runner.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(982, 508);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBoxCactus2);
             this.Controls.Add(this.pictureBoxCactus1);
             this.Controls.Add(this.pictureBoxCoin2);
@@ -304,6 +330,8 @@
         private System.Windows.Forms.PictureBox pictureBoxCoin2;
         private System.Windows.Forms.PictureBox pictureBoxCactus1;
         private System.Windows.Forms.PictureBox pictureBoxCactus2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
     }
 }
 

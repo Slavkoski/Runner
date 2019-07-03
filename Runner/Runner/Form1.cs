@@ -22,9 +22,11 @@ namespace Runner
         private bool gameOver;
         private bool fall;
         private bool decrementFloor;
+        private bool pause;
         private int flying;
         private int Score;
         private int HighScore;
+        private static int floorWidth;
 
         //Serialization
         private string SerializationPath;
@@ -39,12 +41,16 @@ namespace Runner
             right = false;
             gameOver = false;
             fall = false;
+            pause = false;
             flying = 0;
             Score = 0;
             HighScore = 0;
             pictureBoxCoin2.Image = pictureBoxCoin1.Image;
             pictureBoxCoin2.Width = pictureBoxCoin1.Width;
             pictureBoxCoin2.Height = pictureBoxCoin1.Height;
+
+            floorWidth = floor.Width;
+
             // Serialization
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Runner Game");
             Console.WriteLine(FolderPath);
@@ -67,11 +73,16 @@ namespace Runner
             timer1.Enabled = true;
             lblCenterHighScore.Text = "High Score";
             pictureBox1.Visible = true;
-            Score = 0;
-            decrementFloor = false;
-            pictureBoxCactus1.Visible = false;
-            pictureBoxCactus2.Visible = false;
+            if (!pause)
+            {
+                Score = 0;
+                decrementFloor = false;
 
+                pictureBoxCactus1.Visible = false;
+                pictureBoxCactus2.Visible = false;
+            }
+
+            pause = false;
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -86,8 +97,11 @@ namespace Runner
             pictureBox1.Location = new Point(40, 340-50);
             pictureBoxCactus1.Location = new  Point(floor.Width/2,MaximumSize.Height - 103);
             pictureBoxCactus2.Location = new  Point(floor2.Location.X + floor.Width/2,MaximumSize.Height - 103);
-            pictureBoxCoin1.Location = new Point(floor.Location.X + floor.Width + 100, MaximumSize.Height-200);
-            pictureBoxCoin2.Location = new Point(floor2.Location.X + floor2.Width + 100, MaximumSize.Height-200);
+            pictureBoxCoin1.Location = new Point(floor.Location.X + floor.Width + 100, MaximumSize.Height-230);
+            pictureBoxCoin2.Location = new Point(floor2.Location.X + floor2.Width + 100, MaximumSize.Height-230);
+
+            floor.Width = floorWidth;
+            floor2.Width = floorWidth;
 
             lblHighScore.Text = HighScore.ToString();
 
@@ -99,6 +113,7 @@ namespace Runner
         {
             if (e.KeyData == Keys.P || e.KeyData == Keys.Escape)
             {
+                pause = true;
                 timer1.Enabled = false;
                 buttonVisible(true);
             }
@@ -162,12 +177,17 @@ namespace Runner
 
 
                 //Ako Cepne cactus game over
-                if (pictureBoxCactus1.Visible && pictureBoxCoin1.Visible && isOverlap(pictureBox1.Location, pictureBox1.Width, pictureBox1.Height, pictureBoxCactus1.Location, pictureBoxCactus1.Width, pictureBoxCactus1.Height))
+                if (pictureBoxCactus1.Visible && pictureBoxCoin1.Visible
+                                              && 
+                                              isTouching(pictureBox1.Location, pictureBoxCactus1.Location)
+                    )
                 {
                     gameOver = true;
                 }
                 //Ako Cepne cactus game over
-                if (pictureBoxCactus2.Visible && pictureBoxCoin1.Visible && isOverlap(pictureBox1.Location, pictureBox1.Width, pictureBox1.Height, pictureBoxCactus2.Location, pictureBoxCactus2.Width, pictureBoxCactus2.Height))
+                if (pictureBoxCactus2.Visible && pictureBoxCoin1.Visible && 
+                        isTouching(pictureBox1.Location, pictureBoxCactus2.Location)
+                    )
                 {
                     gameOver = true;
                 }
@@ -194,7 +214,8 @@ namespace Runner
 
                 if (!isJumping &&
                     !isOverlap(pictureBox1.Location, pictureBox1.Width, pictureBox1.Height, floor.Location, floor.Width, floor.Height)&&
-                    !isOverlap(pictureBox1.Location, pictureBox1.Width, pictureBox1.Height, floor2.Location, floor2.Width, floor2.Height))
+                    !isOverlap(pictureBox1.Location, pictureBox1.Width, pictureBox1.Height, floor2.Location, floor2.Width, floor2.Height) ||
+                    floor.Location.X + floor.Width < pictureBox1.Location.X + 30 && !isJumping || floor2.Location.X + floor2.Width < pictureBox1.Location.X + 30 && !isJumping)
                 {
                     fall = true;
                 }
@@ -225,6 +246,11 @@ namespace Runner
             }
         }
 
+        public bool isTouching(Point stick, Point cactus)
+
+        {
+            return stick.X + pictureBox1.Width >= cactus.X && stick.X < cactus.X && stick.Y + pictureBox1.Height >= cactus.Y;
+        }
         //FUNKCI
 
         public void moveRight()
@@ -235,7 +261,7 @@ namespace Runner
             pictureBoxCoin2.Location = new Point(pictureBoxCoin2.Location.X - 7, pictureBoxCoin2.Location.Y);
             pictureBoxCactus2.Location = new Point(pictureBoxCactus2.Location.X - 7, pictureBoxCactus2.Location.Y);
             pictureBoxCactus1.Location = new Point(pictureBoxCactus1.Location.X - 7, pictureBoxCactus1.Location.Y);
-            if (Score == 8)
+            if (Score == 6)
             {
                 pictureBoxCactus1.Visible = true;
                 pictureBoxCactus2.Visible = true;
@@ -243,12 +269,12 @@ namespace Runner
 
             //namaluvanje na floor
 
-            if (Score % 12 == 0 && Score != 0 && !decrementFloor)
+            if (Score % 9 == 0 && Score != 0 && !decrementFloor)
             {
                 decrementFloor = true;
             }
 
-            if (decrementFloor && Score % 12 != 0)
+            if (decrementFloor && Score % 9 != 0)
             {
                 decrementFloor = false;
                 floor.Width -= 3;
