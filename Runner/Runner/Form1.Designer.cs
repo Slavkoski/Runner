@@ -192,7 +192,7 @@
             // 
             this.pictureBoxCoin1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxCoin1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCoin1.Image")));
-            this.pictureBoxCoin1.Location = new System.Drawing.Point(474, 307);
+            this.pictureBoxCoin1.Location = new System.Drawing.Point(474, 280);
             this.pictureBoxCoin1.Name = "pictureBoxCoin1";
             this.pictureBoxCoin1.Size = new System.Drawing.Size(42, 39);
             this.pictureBoxCoin1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -203,9 +203,9 @@
             // 
             this.pictureBoxCoin2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxCoin2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCoin2.Image")));
-            this.pictureBoxCoin2.Location = new System.Drawing.Point(1100, 290);
+            this.pictureBoxCoin2.Location = new System.Drawing.Point(1120, 280);
             this.pictureBoxCoin2.Name = "pictureBoxCoin2";
-            this.pictureBoxCoin2.Size = new System.Drawing.Size(57, 49);
+            this.pictureBoxCoin2.Size = new System.Drawing.Size(42, 39);
             this.pictureBoxCoin2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCoin2.TabIndex = 15;
             this.pictureBoxCoin2.TabStop = false;

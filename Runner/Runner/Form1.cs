@@ -21,6 +21,7 @@ namespace Runner
         private bool right;
         private bool gameOver;
         private bool fall;
+        private bool decrementFloor;
         private int flying;
         private int Score;
         private int HighScore;
@@ -67,6 +68,9 @@ namespace Runner
             lblCenterHighScore.Text = "High Score";
             pictureBox1.Visible = true;
             Score = 0;
+            decrementFloor = false;
+            pictureBoxCactus1.Visible = false;
+            pictureBoxCactus2.Visible = false;
 
         }
 
@@ -120,7 +124,7 @@ namespace Runner
             // Ako pagja nadole da nemoze da se kace tuku da padne
             if (gameOver)
             {
-                gameEnd();
+                endGame();
             }
             if (!fall)
             {
@@ -237,6 +241,19 @@ namespace Runner
                 pictureBoxCactus2.Visible = true;
             }
 
+            //namaluvanje na floor
+
+            if (Score % 12 == 0 && Score != 0 && !decrementFloor)
+            {
+                decrementFloor = true;
+            }
+
+            if (decrementFloor && Score % 12 != 0)
+            {
+                decrementFloor = false;
+                floor.Width -= 3;
+                floor2.Width -= 3;
+            }
         }
 
         public void moveUp()
@@ -259,7 +276,7 @@ namespace Runner
             }
         }
 
-        public void gameEnd()
+        public void endGame()
         {
             jump = false;
             isJumping = false;
