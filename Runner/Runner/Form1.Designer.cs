@@ -72,7 +72,7 @@
             this.btnPlay.BackColor = System.Drawing.Color.SeaShell;
             this.btnPlay.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlay.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnPlay.Location = new System.Drawing.Point(377, 200);
+            this.btnPlay.Location = new System.Drawing.Point(366, 201);
             this.btnPlay.Margin = new System.Windows.Forms.Padding(5);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(228, 65);
@@ -130,6 +130,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // floor2
             // 
@@ -170,7 +171,7 @@
             this.lblCenterHighScore.AutoSize = true;
             this.lblCenterHighScore.BackColor = System.Drawing.Color.Transparent;
             this.lblCenterHighScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCenterHighScore.Location = new System.Drawing.Point(359, 71);
+            this.lblCenterHighScore.Location = new System.Drawing.Point(348, 69);
             this.lblCenterHighScore.Name = "lblCenterHighScore";
             this.lblCenterHighScore.Size = new System.Drawing.Size(270, 45);
             this.lblCenterHighScore.TabIndex = 12;
@@ -181,7 +182,7 @@
             this.lblCenterScore.AutoSize = true;
             this.lblCenterScore.BackColor = System.Drawing.Color.Transparent;
             this.lblCenterScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCenterScore.Location = new System.Drawing.Point(471, 134);
+            this.lblCenterScore.Location = new System.Drawing.Point(460, 132);
             this.lblCenterScore.Name = "lblCenterScore";
             this.lblCenterScore.Size = new System.Drawing.Size(45, 45);
             this.lblCenterScore.TabIndex = 13;
@@ -259,6 +260,7 @@
             this.Controls.Add(this.floor2);
             this.Controls.Add(this.floor);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;

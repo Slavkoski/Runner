@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="images\background.ico" />
     <Content Include="images\background.png" />
     <Content Include="images\coin.png" />
     <Content Include="images\dollar.png" />

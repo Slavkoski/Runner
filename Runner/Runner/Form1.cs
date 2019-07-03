@@ -65,7 +65,9 @@ namespace Runner
             buttonVisible(false);
             timer1.Enabled = true;
             lblCenterHighScore.Text = "High Score";
-            //Score = 0;
+            pictureBox1.Visible = true;
+            Score = 0;
+
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -78,7 +80,6 @@ namespace Runner
             floor.Location = new Point(0, MaximumSize.Height - 70);
             floor2.Location = new Point(floor.Width + 200, MaximumSize.Height - 70);
             pictureBox1.Location = new Point(40, 340-50);
-           // pictureBox1.Location = new Point(30, floor.Location.Y - 120);
             pictureBoxCactus1.Location = new  Point(floor.Width/2,MaximumSize.Height - 103);
             pictureBoxCactus2.Location = new  Point(floor2.Location.X + floor.Width/2,MaximumSize.Height - 103);
             pictureBoxCoin1.Location = new Point(floor.Location.X + floor.Width + 100, MaximumSize.Height-200);
@@ -99,13 +100,11 @@ namespace Runner
             }
             else if (e.KeyCode == Keys.Right)
             {
-                //    player.moveRight();
                 right = true;
                 
             }
             if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.Up) && jump == false && isJumping == false)
             {
-                // player.moveLeft();
                 jump = true;
                 isJumping = true;
             }
@@ -121,61 +120,26 @@ namespace Runner
             // Ako pagja nadole da nemoze da se kace tuku da padne
             if (gameOver)
             {
-                jump = false;
-                isJumping = false;
-                timer1.Enabled = false;
-                pictureBoxCactus1.Visible = false;
-                pictureBoxCactus2.Visible = false;
-                btnPlay.Text = "Play Again";
-                if (Score > HighScore)
-                {
-                    HighScore = Score;
-                    lblCenterHighScore.Text = "New High Score!";
-                }
-                lblCenterScore.Text = HighScore.ToString();
-                Score = 0;
-                buttonVisible(true);
-                fall = false;
-                PlayAgain();
+                gameEnd();
             }
             if (!fall)
             {
                 // Ako imame straknato space neka leta
                 if (jump && flying < 15)
                 {
-                    pictureBox1.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y - 5);
-                    flying++;
-                    if (flying == 15)
-                    {
-                        jump = false;
-                    }
+                    moveUp();
                 }
 
                 // Ako imame dostignato sakanata visina vrati go nazad
                 if (!jump && flying > 0)
                 {
-                    pictureBox1.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y + 5);
-                    flying--;
-                    if (flying == 0)
-                    {
-                        isJumping = false;
-                    }
+                    moveDown();
                 }
 
                 // Ako imame pritisnato desno da go dvizime desno
                 if (right)
                 {
-                    floor.Location = new Point(floor.Location.X - 7, floor.Location.Y);
-                    floor2.Location = new Point(floor2.Location.X - 7, floor2.Location.Y);
-                    pictureBoxCoin1.Location = new Point(pictureBoxCoin1.Location.X - 7 , pictureBoxCoin1.Location.Y);
-                    pictureBoxCoin2.Location = new Point(pictureBoxCoin2.Location.X - 7 , pictureBoxCoin2.Location.Y);
-                    pictureBoxCactus2.Location = new Point(pictureBoxCactus2.Location.X - 7, pictureBoxCactus2.Location.Y);
-                    pictureBoxCactus1.Location = new Point(pictureBoxCactus1.Location.X - 7, pictureBoxCactus1.Location.Y);
-                    if (Score == 8)
-                    {
-                        pictureBoxCactus1.Visible = true;
-                        pictureBoxCactus2.Visible = true;
-                    }
+                    moveRight();
                 }
                 // Ako a fanime prvata para
 
@@ -257,6 +221,64 @@ namespace Runner
             }
         }
 
+        //FUNKCI
+
+        public void moveRight()
+        {
+            floor.Location = new Point(floor.Location.X - 7, floor.Location.Y);
+            floor2.Location = new Point(floor2.Location.X - 7, floor2.Location.Y);
+            pictureBoxCoin1.Location = new Point(pictureBoxCoin1.Location.X - 7, pictureBoxCoin1.Location.Y);
+            pictureBoxCoin2.Location = new Point(pictureBoxCoin2.Location.X - 7, pictureBoxCoin2.Location.Y);
+            pictureBoxCactus2.Location = new Point(pictureBoxCactus2.Location.X - 7, pictureBoxCactus2.Location.Y);
+            pictureBoxCactus1.Location = new Point(pictureBoxCactus1.Location.X - 7, pictureBoxCactus1.Location.Y);
+            if (Score == 8)
+            {
+                pictureBoxCactus1.Visible = true;
+                pictureBoxCactus2.Visible = true;
+            }
+
+        }
+
+        public void moveUp()
+        {
+            pictureBox1.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y - 5);
+            flying++;
+            if (flying == 15)
+            {
+                jump = false;
+            }
+        }
+
+        public void moveDown()
+        {
+            pictureBox1.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y + 5);
+            flying--;
+            if (flying == 0)
+            {
+                isJumping = false;
+            }
+        }
+
+        public void gameEnd()
+        {
+            jump = false;
+            isJumping = false;
+            timer1.Enabled = false;
+            pictureBoxCactus1.Visible = false;
+            pictureBoxCactus2.Visible = false;
+            btnPlay.Text = "Play Again";
+            if (Score > HighScore)
+            {
+                HighScore = Score;
+                lblCenterHighScore.Text = "New High Score!";
+            }
+            lblCenterScore.Text = HighScore.ToString();
+            buttonVisible(true);
+            fall = false;
+
+            pictureBox1.Visible = false;
+            PlayAgain();
+        }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             
@@ -327,33 +349,37 @@ namespace Runner
                         return;
                     }
                 }
-            }
 
-            //Starting Serialization
-            try
-            {
-                var myFile = new FileInfo(SerializationPath);
-                if (myFile.Exists)
+                //Starting Serialization
+                try
                 {
-                    myFile.Attributes &= ~FileAttributes.Hidden;
-                }
+                    var myFile = new FileInfo(SerializationPath);
+                    if (myFile.Exists)
+                    {
+                        myFile.Attributes &= ~FileAttributes.Hidden;
+                    }
 
-                using (var stream = new FileStream(SerializationPath, FileMode.Create, FileAccess.Write))
+                    using (var stream = new FileStream(SerializationPath, FileMode.Create, FileAccess.Write))
+                    {
+                        IFormatter formatter = new BinaryFormatter();
+                        formatter.Serialize(stream, HighScore);
+                    }
+
+                    File.SetAttributes(SerializationPath,
+                        File.GetAttributes(SerializationPath) | FileAttributes.Hidden);
+
+
+                }
+                catch (Exception ex)
                 {
-                    IFormatter formatter = new BinaryFormatter();
-                    formatter.Serialize(stream, HighScore);
+                    Console.WriteLine("ERROR! Cannot Save file");
                 }
-
-                File.SetAttributes(SerializationPath, File.GetAttributes(SerializationPath) | FileAttributes.Hidden);
-
-
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("ERROR! Cannot Save file");
+                e.Cancel = true;
             }
 
-
-    }
+        }
     }
 }
