@@ -15,7 +15,7 @@ namespace Runner
 {
     public partial class formRunner : Form
     {
-        public static int MOVE_DISTANCE=10;   
+        public static int MOVE_DISTANCE=15;   
         private bool jump;
         private bool isJumping;
         private bool right;
@@ -321,6 +321,7 @@ namespace Runner
                 decrementFloor = false;
                 pbFloor1.Width -= 3;
                 pbFloor2.Width -= 3;
+                MOVE_DISTANCE += 3;   
             }
         }
 
