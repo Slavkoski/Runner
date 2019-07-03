@@ -89,8 +89,11 @@
     <Content Include="images\background.png" />
     <Content Include="images\coin.png" />
     <Content Include="images\dollar.png" />
+    <Content Include="images\Image1.png" />
+    <Content Include="images\logo.png" />
     <Content Include="images\platform.png" />
     <Content Include="images\transparent_cactus.gif" />
+    <Content Include="logo.png" />
     <None Include="Resources\background_pause.png" />
     <None Include="images\transparent_wave.gif" />
     <None Include="images\transparent_runner.gif" />
