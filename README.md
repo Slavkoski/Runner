@@ -1,5 +1,5 @@
 <p align="center">
-    <img width=40% src="Runner/Runner/images/Game.png?raw=true" alt="Лого на играта/Game logo">
+    <img width=40% src="Runner/Runner/images/logo1.png?raw=true" alt="Лого на играта/Game logo">
 </p>
 
 <h1 align="center">Runner</h1>
@@ -17,47 +17,45 @@
 
 ## Краток опис на играта
 
-Интересна заразна игра каде собираш поени, и постојано пробуваш да го собориш својот рекорд. Играта се состои од стикмен кои собира парички и прескокнува платформи за да не падни во текот на играта се појавуваат и кактуси кои треба да ги прескокни за да не заврши играта исто така при собирање на повеќе парички платформите почнуваат да се намалуваат се со цел да се отежни играта.
+Интересна заразна игра каде собираш поени, и постојано пробуваш да го собориш својот рекорд. Играта се состои од стикмен кој собира парички и прескокнува платформи за да не падне. Во текот на играта се појавуваат и кактуси кои треба да ги прескокне за да не заврши играта. Исто така при собирање на повеќе парички платформите почнуваат да се намалуваат се со цел играта да стане потешка.
 
 ## Упатство за користење
 
-Човекот кој треба да го придвижуваш се придвижува при притискање на стрелката надесно, а за скокање се користи стрелката нагоре или Space копчето. Исто така човекот додека е во скок при притискање на копчето за скокање тоа нема да биде успешно со цел да не лета во воздухот, секогаш ќе може да прескокнува само ако е на платформата.
+Човекот кој треба да го придвижуваш се придвижува при притискање на стрелката надесно, а за скокање се користи стрелката нагоре или Space копчето. Исто така, додека човекот е во скок, обидот за повторно скокање ќе биде неуспешен со цел да не лета во воздухот. Секогаш ќе може да скока само ако е на платформата.
 
 ## Дел од проблемите и дел од кодот
 
-  * При притискање на копчето за придвижување надесно ние ја повикуваме функцијата за придвижување, така што ние ги придвижуваме сите објекти освен човекот со тоа добиваме како човекот да трчи. Исто така во оваа функција кога ќе достигнеме 8 парички ние ги прикажуваме кактусите за да се отежни играта, а на секои 12 парички ja намалуваме големината на платформата.
-  ```C#
-public void moveRight()
+  * При притискање на копчето за придвижување надесно, ја повикуваме функцијата за придвижување, така што ги придвижуваме сите објекти освен човекот, со што добиваме виртуелно трчање на човекот. Исто така во оваа функција кога ќе достигнеме 6 парички ги прикажуваме кактусите, а на секои 9 парички ja намалуваме големината на платформата и ја зголемуваме брзината на движење со цел играта да стане потешка.
+  ```C# public void moveRight()
         {
-            floor.Location = new Point(floor.Location.X - 7, floor.Location.Y);
-            floor2.Location = new Point(floor2.Location.X - 7, floor2.Location.Y);
-            pictureBoxCoin1.Location = new Point(pictureBoxCoin1.Location.X - 7, pictureBoxCoin1.Location.Y);
-            pictureBoxCoin2.Location = new Point(pictureBoxCoin2.Location.X - 7, pictureBoxCoin2.Location.Y);
-            pictureBoxCactus2.Location = new Point(pictureBoxCactus2.Location.X - 7, pictureBoxCactus2.Location.Y);
-            pictureBoxCactus1.Location = new Point(pictureBoxCactus1.Location.X - 7, pictureBoxCactus1.Location.Y);
-            if (Score == 8)
+            pbFloor1.Location = new Point(pbFloor1.Location.X - MOVE_DISTANCE, pbFloor1.Location.Y);
+            pbFloor2.Location = new Point(pbFloor2.Location.X - MOVE_DISTANCE, pbFloor2.Location.Y);
+            pbCoin1.Location = new Point(pbCoin1.Location.X - MOVE_DISTANCE, pbCoin1.Location.Y);
+            pbCoin2.Location = new Point(pbCoin2.Location.X - MOVE_DISTANCE, pbCoin2.Location.Y);
+            pbCactus2.Location = new Point(pbCactus2.Location.X - MOVE_DISTANCE, pbCactus2.Location.Y);
+            pbCactus1.Location = new Point(pbCactus1.Location.X - MOVE_DISTANCE, pbCactus1.Location.Y);
+            if (Score == 6)
             {
-                pictureBoxCactus1.Visible = true;
-                pictureBoxCactus2.Visible = true;
+                pbCactus1.Visible = true;
+                pbCactus2.Visible = true;
+                cactusShow = true;
             }
 
-            //namaluvanje na floor
-
-            if (Score % 12 == 0 && Score != 0 && !decrementFloor)
+            if (Score % 9 == 0 && Score != 0 && !decrementFloor)
             {
                 decrementFloor = true;
             }
 
-            if (decrementFloor && Score % 12 != 0)
+            if (decrementFloor && Score % 9 != 0)
             {
                 decrementFloor = false;
-                floor.Width -= 3;
-                floor2.Width -= 3;
+                pbFloor1.Width -= 3;
+                pbFloor2.Width -= 3;
+                MOVE_DISTANCE += 3;   
             }
         }
-
   ```  
-  * При скокање ги повикуваме две функции една за човекот да се придвижи нагоре а друга за да се придвижи надоле.
+  * При скокање повикуваме две функции, една за човекот да се придвижи нагоре, а друга за да се придвижи надоле.
   ```C#
 public void moveUp()
         {
@@ -106,7 +104,8 @@ public void endGame()
         }
 ```
 
-* Проблемот за бесконечно појавување на платформата за трчање е решен така што чим исчезни платформата да се појави на одредена далечина од останатата платформа.
+* Проблемот за бесконечно појавување на платформата за трчање е решен така што кога човекот прескокнува дупка платформата позади него се губи, но на одредена далечина се појавува нова платформа.
+
 ```C#
  
 if (floor.Location.X < -floor.Width)
@@ -125,7 +124,7 @@ if (floor.Location.X < -floor.Width)
             pictureBoxCoin1.Visible = true;
         }
   ```
-  * При затварање на играта со отвара конфирмациски диалог при потврдување дека сакате да се исклучи играта автоматски кај секој корисник во **Documents** се зачувува **High Score** но фајлот е скриен (hidden) за да неможе да го примети секој.
+  * При затварање на играта со отвара конфирмациски диалог со прашање дали сте сигурни дека сакате да се исклучи играта. Автоматски кај секој корисник во **Documents** се зачувува **High Score**, но фајлот е скриен (hidden) за да неможе да го примети секој.
   ```C#
 private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -179,7 +178,7 @@ private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         }
   ```
 
-  * Исто така при лоадирање се проверува дали има зачувано **highscore.bin** ако има се превземаат податоците и се прикажува претходниот **high score**.
+  * Исто така при лоадирање на играта се проверува дали има зачувано **highscore.bin** ако има се превземаат податоците и се прикажува претходниот **high score**.
   ```C#
 private void Form1_Load(object sender, EventArgs e)
         {
@@ -215,7 +214,7 @@ private void Form1_Load(object sender, EventArgs e)
 
 ## Користени библиотеки
 <br>
-Најголем дел од проблемите со кои се соочувавме беа пронајдени:
+Најголем дел од решенијата на проблемите со кои се соочувавме беа пронајдени:
 
   * [stackoverflow](https://stackoverflow.com/)
   * [geeksforgeeks](https://www.geeksforgeeks.org/)
