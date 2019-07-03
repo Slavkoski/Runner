@@ -15,7 +15,7 @@ namespace Runner
 {
     public partial class formRunner : Form
     {
-        public static int MOVE_DISTANCE=15;   
+        public static int MOVE_DISTANCE=11;   
         private bool jump;
         private bool isJumping;
         private bool right;
