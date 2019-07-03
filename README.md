@@ -211,7 +211,7 @@ private void Form1_Load(object sender, EventArgs e)
         }
   ```
 <br>
-Напомена оваа се само мал дел од проблемите кои ги имавме при имплементација.
+**Напомена оваа се само мал дел од проблемите кои ги имавме при имплементација!**
 
 ## Користени библиотеки
 <br>
@@ -221,6 +221,8 @@ private void Form1_Load(object sender, EventArgs e)
   * [geeksforgeeks](https://www.geeksforgeeks.org/)
   * [google](https://www.google.com/)
 
+<br>
+<hr>
 
 ### Изработиле:
   1. Кирил Ристов - 173217
