@@ -17,7 +17,7 @@ namespace Runner
 {
     public partial class formRunner : Form
     {
-        public static int MOVE_DISTANCE = 7;
+        public static int MOVE_DISTANCE = 9;
         private bool jump;
         private bool isJumping;
         private bool right;
@@ -178,10 +178,10 @@ namespace Runner
 
             pbPlayer.Image = PlayerStandsPHOTO;
 
-            MOVE_DISTANCE = 7;
+            MOVE_DISTANCE = 9;
 
             lblHighScore.Text = HighScore.ToString();
-            handled = true;
+           // handled = true;
             flying = 0;
         }
 
@@ -319,7 +319,7 @@ namespace Runner
                 {
                     moveRight();
                 }
-                else
+                else if(!isJumping)
                 {
                     stickmanWaiting++;
                     if (stickmanWaiting == 7)
@@ -452,7 +452,7 @@ namespace Runner
             //lblCenterHighScore.Text = HighScore.ToString();
             buttonVisible(true);
             btnPlay.Text = "Play again";
-            MOVE_DISTANCE = 7;
+            MOVE_DISTANCE = 9;
 
             pbPlayer.Visible = false;
             PlayAgain();
@@ -511,6 +511,7 @@ namespace Runner
 
         public void moveUp()
         {
+            pbPlayer.Image = PlayerPHOTO;
             pbPlayer.Location = new Point(pbPlayer.Location.X, pbPlayer.Location.Y - 5);
             flying++;
             if (flying == 15)
@@ -521,6 +522,7 @@ namespace Runner
 
         public void moveDown()
         {
+            pbPlayer.Image = PlayerPHOTO;
             pbPlayer.Location = new Point(pbPlayer.Location.X, pbPlayer.Location.Y + 5);
             flying--;
             if (flying == 0)
