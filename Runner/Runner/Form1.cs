@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Runner
 {
     public partial class formRunner : Form
     {
-        public static int MOVE_DISTANCE=7;   
+        public static int MOVE_DISTANCE = 7;
         private bool jump;
         private bool isJumping;
         private bool right;
@@ -36,6 +37,7 @@ namespace Runner
         public string stickmanRunning;
 
         public int stickmanWaiting;
+
         //sliki za pozadini za pause i play
         Image BackgroundPHOTO;
         Image BackgroundPausePHOTO;
@@ -43,11 +45,12 @@ namespace Runner
         //Serialization
         private string SerializationPath;
         private string FolderPath;
+
         public formRunner()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
-           
+
             jump = false;
             isJumping = false;
             right = false;
@@ -97,8 +100,8 @@ namespace Runner
         {
             btnPlay.Visible = visible;
             lbForlCenterHighScore.Visible = visible;
-            lblCenterHighScore.Visible = visible;
-            
+           // lblCenterHighScore.Visible = visible;
+
             pbCoin1.Visible = !visible;
             pbCoin2.Visible = !visible;
             lblKontroli.Visible = visible;
@@ -125,11 +128,12 @@ namespace Runner
             {
                 this.BackgroundImage = BackgroundPHOTO;
             }
-                
+
         }
 
         private void BtnPlay_Click(object sender, EventArgs e)
         {
+            
             if (handled)
             {
                 handled = false;
@@ -140,10 +144,10 @@ namespace Runner
                 timer1.Enabled = true;
                 lbForlCenterHighScore.Text = "High Score:";
                 pbPlayer.Visible = true;
-                
+
 
                 //dokolku ne e pauza znachi e pochetok, skorot=0, kaktusite gi nema itn
-                if ((!pause && !isSpace ) || gameOver)
+                if ((!pause && !isSpace) || gameOver)
                 {
                     Score = 0;
                     decrementFloor = false;
@@ -164,11 +168,11 @@ namespace Runner
         {
             pbFloor1.Location = new Point(0, MaximumSize.Height - 70);
             pbFloor2.Location = new Point(pbFloor1.Width + 200, MaximumSize.Height - 70);
-            pbPlayer.Location = new Point(40, 340-50);
-            pbCactus1.Location = new  Point(pbFloor1.Width/2,MaximumSize.Height - 103);
-            pbCactus2.Location = new  Point(pbFloor2.Location.X + pbFloor1.Width/2,MaximumSize.Height - 103);
-            pbCoin1.Location = new Point(pbFloor1.Location.X + pbFloor1.Width + 100, MaximumSize.Height-230);
-            pbCoin2.Location = new Point(pbFloor2.Location.X + pbFloor2.Width + 100, MaximumSize.Height-230);
+            pbPlayer.Location = new Point(40, 340 - 50);
+            pbCactus1.Location = new Point(pbFloor1.Width / 2, MaximumSize.Height - 103);
+            pbCactus2.Location = new Point(pbFloor2.Location.X + pbFloor1.Width / 2, MaximumSize.Height - 103);
+            pbCoin1.Location = new Point(pbFloor1.Location.X + pbFloor1.Width + 100, MaximumSize.Height - 230);
+            pbCoin2.Location = new Point(pbFloor2.Location.X + pbFloor2.Width + 100, MaximumSize.Height - 230);
 
             pbFloor1.Width = floorWidth;
             pbFloor2.Width = floorWidth;
@@ -183,12 +187,12 @@ namespace Runner
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
+          {
             // P ili Esc za pause
-            
-            if (e.KeyData == Keys.P || e.KeyData == Keys.Escape)
+
+            if (e.KeyData == Keys.P || e.KeyData == Keys.Escape && !fall)
             {
-                
+
                 pause = true;
                 timer1.Enabled = false;
                 buttonVisible(true);
@@ -200,13 +204,14 @@ namespace Runner
                 {
                     pbPlayer.ImageLocation = stickmanRunning;
                 }
+
                 stickmanWaiting = 0;
                 right = true;
             }
 
-            if (e.KeyCode == Keys.Space && (pause  || gameOver || fall || isJumping || jump))
+            if (e.KeyCode == Keys.Space && (pause || gameOver || fall || isJumping || jump))
             {
-               handled = true;
+                handled = true;
             }
             else if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.Up) && !jump && !isJumping && !handled)
             {
@@ -214,11 +219,74 @@ namespace Runner
                 {
                     pbPlayer.ImageLocation = stickmanRunning;
                 }
+
                 stickmanWaiting = 0;
                 isSpace = true;
                 jump = true;
                 isJumping = true;
                 handled = false;
+            }
+
+
+            if (e.KeyCode != Keys.Space)
+            {
+                handled = false;
+            }
+            //RESET HIGHSCORE
+            if ( e.KeyCode == Keys.R && pause && HighScore != 0)
+            {
+
+                if (MessageBox.Show("Are you sure you want to reset the highscore", "Reset highscore",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    HighScore = 0;
+                    if (!Directory.Exists(FolderPath))
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory(FolderPath);
+                            Console.WriteLine("Folder Succesfully created");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("ERROR! Folder is not created");
+                            return;
+                        }
+                    }
+
+                    //Starting Serialization
+                    try
+                    {
+                        var myFile = new FileInfo(SerializationPath);
+                        if (myFile.Exists)
+                        {
+                            myFile.Attributes &= ~FileAttributes.Hidden;
+                        }
+
+                        using (var stream = new FileStream(SerializationPath, FileMode.Create, FileAccess.Write))
+                        {
+                            IFormatter formatter = new BinaryFormatter();
+                            formatter.Serialize(stream, HighScore);
+                        }
+
+                        File.SetAttributes(SerializationPath,
+                            File.GetAttributes(SerializationPath) | FileAttributes.Hidden);
+
+                        
+                        lblHighScore.Text = HighScore.ToString();
+                        lbForlCenterHighScore.Text = "High Score!" + HighScore.ToString();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("ERROR! Cannot Save file");
+                    }
+                }
+
+
+
+
             }
         }
 
@@ -231,9 +299,10 @@ namespace Runner
             {
                 endGame();
             }
+
             if (!fall)
             {
-              
+
                 // Ako imame straknato space neka leta
                 if (jump && flying < 15)
                 {
@@ -261,13 +330,16 @@ namespace Runner
                 }
                 // Ako a fanime prvata para
 
-                if (pbCoin1.Visible && isOverlap(pbPlayer.Location,pbPlayer.Width,pbPlayer.Height,pbCoin1.Location,pbCoin1.Width,pbCoin1.Height))
+                if (pbCoin1.Visible && isOverlap(pbPlayer.Location, pbPlayer.Width, pbPlayer.Height, pbCoin1.Location,
+                        pbCoin1.Width, pbCoin1.Height))
                 {
                     Score++;
                     pbCoin1.Visible = false;
                 }
+
                 // Ako a fanime vtorata para
-                if (pbCoin2.Visible && isOverlap(pbPlayer.Location, pbPlayer.Width, pbPlayer.Height, pbCoin2.Location, pbCoin2.Width, pbCoin2.Height))
+                if (pbCoin2.Visible && isOverlap(pbPlayer.Location, pbPlayer.Width, pbPlayer.Height, pbCoin2.Location,
+                        pbCoin2.Width, pbCoin2.Height))
                 {
                     Score++;
                     pbCoin2.Visible = false;
@@ -277,20 +349,21 @@ namespace Runner
 
                 //Ako Cepne cactus game over
                 if ((pbCactus1.Visible && pbCoin1.Visible
-                                              && 
-                                              isTouching(pbPlayer.Location, pbCactus1.Location )) || (pbCactus2.Visible && pbCoin2.Visible &&
-                                                                                                     isTouching(pbPlayer.Location, pbCactus2.Location)))
+                                       &&
+                                       isTouching(pbPlayer.Location, pbCactus1.Location)) ||
+                    (pbCactus2.Visible && pbCoin2.Visible &&
+                     isTouching(pbPlayer.Location, pbCactus2.Location)))
                 {
                     gameOver = true;
                     fall = true;
                 }
                 //Ako Cepne cactus game over
-          //      if (pbCactus2.Visible && pbCoin2.Visible &&
-            //            isTouching(pbPlayer.Location, pbCactus2.Location)
-              //      )
+                //      if (pbCactus2.Visible && pbCoin2.Visible &&
+                //            isTouching(pbPlayer.Location, pbCactus2.Location)
+                //      )
                 //{
-                  //  gameOver = true;
-                    //fall = true;
+                //  gameOver = true;
+                //fall = true;
                 //}
 
                 // Ako isceznalo prviot block dodadi go na location width + dupkata so a sakame
@@ -311,9 +384,12 @@ namespace Runner
                 }
 
                 if (!isJumping &&
-                    !isOverlap(pbPlayer.Location, pbPlayer.Width, pbPlayer.Height, pbFloor1.Location, pbFloor1.Width, pbFloor1.Height)&&
-                    !isOverlap(pbPlayer.Location, pbPlayer.Width, pbPlayer.Height, pbFloor2.Location, pbFloor2.Width, pbFloor2.Height) ||
-                    pbFloor1.Location.X + pbFloor1.Width < pbPlayer.Location.X + 30 && !isJumping || pbFloor2.Location.X + pbFloor2.Width < pbPlayer.Location.X + 30 && !isJumping)
+                    !isOverlap(pbPlayer.Location, pbPlayer.Width, pbPlayer.Height, pbFloor1.Location, pbFloor1.Width,
+                        pbFloor1.Height) &&
+                    !isOverlap(pbPlayer.Location, pbPlayer.Width, pbPlayer.Height, pbFloor2.Location, pbFloor2.Width,
+                        pbFloor2.Height) ||
+                    pbFloor1.Location.X + pbFloor1.Width < pbPlayer.Location.X + 30 && !isJumping ||
+                    pbFloor2.Location.X + pbFloor2.Width < pbPlayer.Location.X + 30 && !isJumping)
                 {
                     fall = true;
                 }
@@ -326,10 +402,10 @@ namespace Runner
                 //A povikuvame move right oti samo platformite se mrdat vaka a ne i akktusite i parite
                 moveRight();
                 //pbFloor1.Location = new Point(pbFloor1.Location.X - 5, pbFloor1.Location.Y);
-               // pbFloor2.Location = new Point(pbFloor2.Location.X - 5, pbFloor2.Location.Y);
-                
-               
-               //Game Over
+                // pbFloor2.Location = new Point(pbFloor2.Location.X - 5, pbFloor2.Location.Y);
+
+
+                //Game Over
                 if (pbPlayer.Location.Y + 120 >= 555)
                 {
                     //Venko: go komentirav kodot dole bidejkji dva pati se pojavuvashe play again
@@ -367,9 +443,14 @@ namespace Runner
             if (Score > HighScore)
             {
                 HighScore = Score;
-                lbForlCenterHighScore.Text = "New High Score!";
+                lbForlCenterHighScore.Text = "New High Score! ";
             }
-            lblCenterHighScore.Text = HighScore.ToString();
+            else
+            {
+                lbForlCenterHighScore.Text = "High Score: " + HighScore.ToString();
+            }
+
+            //lblCenterHighScore.Text = HighScore.ToString();
             buttonVisible(true);
             btnPlay.Text = "Play again";
             MOVE_DISTANCE = 7;
@@ -415,6 +496,7 @@ namespace Runner
                 pbFloor2.Width -= 3;
                 MOVE_DISTANCE += 1;
             }
+
             //Zgolemuvanje na MOVE_DISTANCE
             if (Score % 6 == 0 && Score != 0 && !addVelocity && MOVE_DISTANCE <= 11)
             {
@@ -448,7 +530,8 @@ namespace Runner
             }
         }
 
-        public bool isOverlap(Point rectangle1, int widthRec1, int heightRec1, Point rectangle2, int widthRec2, int heightRec2)
+        public bool isOverlap(Point rectangle1, int widthRec1, int heightRec1, Point rectangle2, int widthRec2,
+            int heightRec2)
         {
             if (((rectangle1.X >= rectangle2.X && rectangle1.X <= rectangle2.X + widthRec2) ||
                  (rectangle1.X + widthRec1 >= rectangle2.X && rectangle1.X + widthRec1 <= rectangle2.X + widthRec2)) &&
@@ -476,7 +559,7 @@ namespace Runner
                     {
                         IFormatter formatter = new BinaryFormatter();
                         HighScore = (int) formatter.Deserialize(stream);
-                       
+
                     }
                 }
                 catch (Exception ex)
@@ -492,7 +575,7 @@ namespace Runner
             }
 
             lblHighScore.Text = HighScore.ToString();
-            lblCenterHighScore.Text = HighScore.ToString();
+            lbForlCenterHighScore.Text = "High Score: " + HighScore.ToString();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -545,6 +628,8 @@ namespace Runner
             }
 
         }
-
     }
+
 }
+ 
+

@@ -40,7 +40,6 @@
             this.lblScore = new System.Windows.Forms.Label();
             this.lblForScore = new System.Windows.Forms.Label();
             this.lbForlCenterHighScore = new System.Windows.Forms.Label();
-            this.lblCenterHighScore = new System.Windows.Forms.Label();
             this.pbCoin1 = new System.Windows.Forms.PictureBox();
             this.pbCoin2 = new System.Windows.Forms.PictureBox();
             this.pbCactus1 = new System.Windows.Forms.PictureBox();
@@ -168,17 +167,6 @@
             this.lbForlCenterHighScore.TabIndex = 12;
             this.lbForlCenterHighScore.Text = "High Score:";
             // 
-            // lblCenterHighScore
-            // 
-            this.lblCenterHighScore.AutoSize = true;
-            this.lblCenterHighScore.BackColor = System.Drawing.Color.Transparent;
-            this.lblCenterHighScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCenterHighScore.Location = new System.Drawing.Point(625, 38);
-            this.lblCenterHighScore.Name = "lblCenterHighScore";
-            this.lblCenterHighScore.Size = new System.Drawing.Size(45, 45);
-            this.lblCenterHighScore.TabIndex = 13;
-            this.lblCenterHighScore.Text = "0";
-            // 
             // pbCoin1
             // 
             this.pbCoin1.BackColor = System.Drawing.Color.Transparent;
@@ -266,6 +254,7 @@
             // 
             // formRunner
             // 
+            this.AcceptButton = this.btnPlay;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Runner.Properties.Resources.background;
@@ -279,7 +268,6 @@
             this.Controls.Add(this.pbCactus2);
             this.Controls.Add(this.pbCactus1);
             this.Controls.Add(this.pbCoin2);
-            this.Controls.Add(this.lblCenterHighScore);
             this.Controls.Add(this.lbForlCenterHighScore);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.lblForScore);
@@ -326,7 +314,6 @@
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label lblForScore;
         private System.Windows.Forms.Label lbForlCenterHighScore;
-        private System.Windows.Forms.Label lblCenterHighScore;
         private System.Windows.Forms.PictureBox pbCoin1;
         private System.Windows.Forms.PictureBox pbCoin2;
         private System.Windows.Forms.PictureBox pbCactus1;
