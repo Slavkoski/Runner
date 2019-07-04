@@ -45,6 +45,9 @@
             this.pbCoin2 = new System.Windows.Forms.PictureBox();
             this.pbCactus1 = new System.Windows.Forms.PictureBox();
             this.pbCactus2 = new System.Windows.Forms.PictureBox();
+            this.lblKontroli = new System.Windows.Forms.Label();
+            this.lblForCurrentScore = new System.Windows.Forms.Label();
+            this.lblCurrentScore = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbFloor1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFloor2)).BeginInit();
@@ -71,7 +74,7 @@
             this.btnPlay.BackColor = System.Drawing.Color.SeaShell;
             this.btnPlay.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlay.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnPlay.Location = new System.Drawing.Point(365, 201);
+            this.btnPlay.Location = new System.Drawing.Point(375, 211);
             this.btnPlay.Margin = new System.Windows.Forms.Padding(5);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(228, 65);
@@ -159,18 +162,18 @@
             this.lbForlCenterHighScore.AutoSize = true;
             this.lbForlCenterHighScore.BackColor = System.Drawing.Color.Transparent;
             this.lbForlCenterHighScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbForlCenterHighScore.Location = new System.Drawing.Point(348, 69);
+            this.lbForlCenterHighScore.Location = new System.Drawing.Point(308, 38);
             this.lbForlCenterHighScore.Name = "lbForlCenterHighScore";
-            this.lbForlCenterHighScore.Size = new System.Drawing.Size(270, 45);
+            this.lbForlCenterHighScore.Size = new System.Drawing.Size(295, 45);
             this.lbForlCenterHighScore.TabIndex = 12;
-            this.lbForlCenterHighScore.Text = "High Score";
+            this.lbForlCenterHighScore.Text = "High Score:";
             // 
             // lblCenterHighScore
             // 
             this.lblCenterHighScore.AutoSize = true;
             this.lblCenterHighScore.BackColor = System.Drawing.Color.Transparent;
             this.lblCenterHighScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCenterHighScore.Location = new System.Drawing.Point(460, 132);
+            this.lblCenterHighScore.Location = new System.Drawing.Point(625, 38);
             this.lblCenterHighScore.Name = "lblCenterHighScore";
             this.lblCenterHighScore.Size = new System.Drawing.Size(45, 45);
             this.lblCenterHighScore.TabIndex = 13;
@@ -226,6 +229,41 @@
             this.pbCactus2.TabStop = false;
             this.pbCactus2.Visible = false;
             // 
+            // lblKontroli
+            // 
+            this.lblKontroli.AutoSize = true;
+            this.lblKontroli.BackColor = System.Drawing.Color.Transparent;
+            this.lblKontroli.Font = new System.Drawing.Font("Segoe Print", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKontroli.Location = new System.Drawing.Point(350, 281);
+            this.lblKontroli.Name = "lblKontroli";
+            this.lblKontroli.Size = new System.Drawing.Size(253, 120);
+            this.lblKontroli.TabIndex = 19;
+            this.lblKontroli.Text = "How to play?\r\nPress Esc or P for Pause\r\nPress Space or Up for jump\r\nPress Right t" +
+    "o move\r\n";
+            this.lblKontroli.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblForCurrentScore
+            // 
+            this.lblForCurrentScore.AutoSize = true;
+            this.lblForCurrentScore.BackColor = System.Drawing.Color.Transparent;
+            this.lblForCurrentScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblForCurrentScore.Location = new System.Drawing.Point(207, 118);
+            this.lblForCurrentScore.Name = "lblForCurrentScore";
+            this.lblForCurrentScore.Size = new System.Drawing.Size(495, 45);
+            this.lblForCurrentScore.TabIndex = 22;
+            this.lblForCurrentScore.Text = "Your current score:";
+            // 
+            // lblCurrentScore
+            // 
+            this.lblCurrentScore.AutoSize = true;
+            this.lblCurrentScore.BackColor = System.Drawing.Color.Transparent;
+            this.lblCurrentScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentScore.Location = new System.Drawing.Point(727, 118);
+            this.lblCurrentScore.Name = "lblCurrentScore";
+            this.lblCurrentScore.Size = new System.Drawing.Size(45, 45);
+            this.lblCurrentScore.TabIndex = 23;
+            this.lblCurrentScore.Text = "0";
+            // 
             // formRunner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -233,6 +271,9 @@
             this.BackgroundImage = global::Runner.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(981, 506);
+            this.Controls.Add(this.lblCurrentScore);
+            this.Controls.Add(this.lblForCurrentScore);
+            this.Controls.Add(this.lblKontroli);
             this.Controls.Add(this.btnPlay);
             this.Controls.Add(this.pbCoin1);
             this.Controls.Add(this.pbCactus2);
@@ -290,6 +331,9 @@
         private System.Windows.Forms.PictureBox pbCoin2;
         private System.Windows.Forms.PictureBox pbCactus1;
         private System.Windows.Forms.PictureBox pbCactus2;
+        private System.Windows.Forms.Label lblKontroli;
+        private System.Windows.Forms.Label lblForCurrentScore;
+        private System.Windows.Forms.Label lblCurrentScore;
     }
 }
 

@@ -61,9 +61,18 @@ namespace Runner
             pbCoin2.Width = pbCoin1.Width;
             pbCoin2.Height = pbCoin1.Height;
             pbCoin1.Visible = false;
+            btnPlay.Text = "Play new game";
+            lblKontroli.Visible = true;
+            lblScore.Visible = false;
+            lblHighScore.Visible = false;
+            lblForScore.Visible = false;
+            lblForHighScore.Visible = false;
+            lblForCurrentScore.Visible = false;
+            lblCurrentScore.Visible = false;
 
             BackgroundPausePHOTO = global::Runner.Properties.Resources.background_pause;
             BackgroundPHOTO = global::Runner.Properties.Resources.background;
+            this.BackgroundImage = BackgroundPausePHOTO;
 
             floorWidth = pbFloor1.Width;
 
@@ -83,7 +92,13 @@ namespace Runner
             
             pbCoin1.Visible = !visible;
             pbCoin2.Visible = !visible;
-
+            lblKontroli.Visible = visible;
+            lblScore.Visible = !visible;
+            lblHighScore.Visible = !visible;
+            lblForHighScore.Visible = !visible;
+            lblForScore.Visible = !visible;
+            lblCurrentScore.Visible = visible;
+            lblForCurrentScore.Visible = visible;
             //dokolku skorot e posle 6 koga kje se pauzira da se sokrijat i kaktusite, prethodno se sokrieni
             if (cactusShow)
             {
@@ -93,9 +108,15 @@ namespace Runner
 
             // dokolku e pauza se menuvaat pozadinite
             if (visible)
+            {
                 this.BackgroundImage = BackgroundPausePHOTO;
+                btnPlay.Text = "Continue";
+            }
             else
+            {
                 this.BackgroundImage = BackgroundPHOTO;
+            }
+                
         }
 
         private void BtnPlay_Click(object sender, EventArgs e)
@@ -103,18 +124,17 @@ namespace Runner
             if (handled)
             {
                 handled = false;
-                return;
             }
             else
             {
                 buttonVisible(false);
                 timer1.Enabled = true;
-                lbForlCenterHighScore.Text = "High Score";
+                lbForlCenterHighScore.Text = "High Score:";
                 pbPlayer.Visible = true;
-
+                
 
                 //dokolku ne e pauza znachi e pochetok, skorot=0, kaktusite gi nema itn
-                if ((!pause && !isSpace )|| gameOver)
+                if ((!pause && !isSpace ) || gameOver)
                 {
                     Score = 0;
                     decrementFloor = false;
@@ -124,7 +144,6 @@ namespace Runner
                     isSpace = false;
                 }
 
-               
                 pause = false;
                 fall = false;
                 gameOver = false;
@@ -147,34 +166,35 @@ namespace Runner
 
             lblHighScore.Text = HighScore.ToString();
 
-           // gameOver = false;
             flying = 0;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             // P ili Esc za pause
+            
             if (e.KeyData == Keys.P || e.KeyData == Keys.Escape)
             {
                 pause = true;
                 timer1.Enabled = false;
                 buttonVisible(true);
+                handled = false;
             }
             else if (e.KeyCode == Keys.Right)
             {
                 right = true;
-                
             }
 
-            if (e.KeyCode == Keys.Space && pause || gameOver || fall || isJumping || jump)
+            if (e.KeyCode == Keys.Space && pause  || gameOver || fall || isJumping || jump)
             {
-                handled = true;
+               handled = true;
             }
             else if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.Up) && !jump && !isJumping )
             {
                 isSpace = true;
                 jump = true;
                 isJumping = true;
+                handled = false;
             }
         }
 
@@ -265,7 +285,7 @@ namespace Runner
                     fall = true;
                 }
 
-                lblScore.Text = Score.ToString();
+                lblScore.Text = lblCurrentScore.Text = Score.ToString();
             }
             else if (fall && !gameOver)
             {
@@ -281,7 +301,8 @@ namespace Runner
                 {
                     //Venko: go komentirav kodot dole bidejkji dva pati se pojavuvashe play again
                     // vaka se pojavuva samo ednash no kodot e ostaven zakomentiran za da ne izleze nekoj problem   
-                    endGame();
+                    //endGame();
+
                     //timer1.Enabled = false;
                     //btnPlay.Text = "Play Again";
                     //if (Score > HighScore)
@@ -293,22 +314,22 @@ namespace Runner
                     //Score = 0;
                     //buttonVisible(true);
                     //fall = false;
-                    //gameOver = true;
+                    gameOver = true;
+                    handled = false;
                 }
             }
         }
 
         public void endGame()
         {
+            timer1.Enabled = false;
             gameOver = true;
             pause = true;
             jump = false;
             isJumping = false;
-            timer1.Enabled = false;
             pbCactus1.Visible = false;
             pbCactus2.Visible = false;
             cactusShow = false;
-            btnPlay.Text = "Play Again";
             if (Score > HighScore)
             {
                 HighScore = Score;
@@ -316,7 +337,7 @@ namespace Runner
             }
             lblCenterHighScore.Text = HighScore.ToString();
             buttonVisible(true);
-
+            btnPlay.Text = "Play again";
             MOVE_DISTANCE = 7;
 
             pbPlayer.Visible = false;
