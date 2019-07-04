@@ -33,14 +33,14 @@ namespace Runner
         private int HighScore;
         private static int floorWidth;
         public bool cactusShow;
-        public string stickmanWave;
-        public string stickmanRunning;
 
         public int stickmanWaiting;
 
         //sliki za pozadini za pause i play
         Image BackgroundPHOTO;
         Image BackgroundPausePHOTO;
+        Image PlayerPHOTO;
+        Image PlayerStandsPHOTO;
 
         //Serialization
         private string SerializationPath;
@@ -90,9 +90,8 @@ namespace Runner
             Console.WriteLine(SerializationPath);
             stickmanWaiting = 0;
 
-            stickmanRunning = "C:\\Users\\risto\\source\\repos\\Runner\\Runner\\Runner\\images\\transparent_runner.gif";
-            stickmanWave = "C:\\Users\\risto\\source\\repos\\Runner\\Runner\\Runner\\images\\transparent_stickman.gif";
-
+            PlayerPHOTO = global::Runner.Properties.Resources.transparent_runner;
+            PlayerStandsPHOTO = global::Runner.Properties.Resources.transparent_stickman;
         }
 
         // Menuvanje na kopcinjata za vidlivost 
@@ -177,7 +176,7 @@ namespace Runner
             pbFloor1.Width = floorWidth;
             pbFloor2.Width = floorWidth;
 
-            pbPlayer.ImageLocation = stickmanWave;
+            pbPlayer.Image = PlayerStandsPHOTO;
 
             MOVE_DISTANCE = 7;
 
@@ -200,9 +199,9 @@ namespace Runner
             }
             else if (e.KeyCode == Keys.Right)
             {
-                if (stickmanWaiting != 0 && pbPlayer.ImageLocation != stickmanRunning)
+                if (stickmanWaiting != 0 && pbPlayer.Image != PlayerPHOTO)
                 {
-                    pbPlayer.ImageLocation = stickmanRunning;
+                    pbPlayer.Image = PlayerPHOTO;
                 }
 
                 stickmanWaiting = 0;
@@ -215,9 +214,9 @@ namespace Runner
             }
             else if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.Up) && !jump && !isJumping && !handled)
             {
-                if (stickmanWaiting != 0 && pbPlayer.ImageLocation != stickmanRunning)
+                if (stickmanWaiting != 0 && pbPlayer.Image != PlayerPHOTO)
                 {
-                    pbPlayer.ImageLocation = stickmanRunning;
+                    pbPlayer.Image = PlayerPHOTO;
                 }
 
                 stickmanWaiting = 0;
@@ -325,7 +324,7 @@ namespace Runner
                     stickmanWaiting++;
                     if (stickmanWaiting == 7)
                     {
-                        pbPlayer.ImageLocation = stickmanWave;
+                        pbPlayer.Image = PlayerStandsPHOTO;
                     }
                 }
                 // Ako a fanime prvata para

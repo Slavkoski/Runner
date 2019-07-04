@@ -95,6 +95,8 @@
     <Content Include="images\transparent_cactus.gif" />
     <Content Include="images\transparent_stickman.gif" />
     <Content Include="logo.png" />
+    <None Include="Resources\transparent_stickman.gif" />
+    <None Include="Resources\transparent_runner.gif" />
     <None Include="Resources\background_pause.png" />
     <None Include="images\transparent_wave.gif" />
     <None Include="images\transparent_runner.gif" />
