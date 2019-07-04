@@ -58,10 +58,10 @@
             // 
             this.pbFloor1.BackgroundImage = global::Runner.Properties.Resources.platform;
             this.pbFloor1.Image = global::Runner.Properties.Resources.platform;
-            this.pbFloor1.Location = new System.Drawing.Point(0, 378);
-            this.pbFloor1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbFloor1.Location = new System.Drawing.Point(0, 465);
+            this.pbFloor1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbFloor1.Name = "pbFloor1";
-            this.pbFloor1.Size = new System.Drawing.Size(285, 41);
+            this.pbFloor1.Size = new System.Drawing.Size(380, 50);
             this.pbFloor1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbFloor1.TabIndex = 0;
             this.pbFloor1.TabStop = false;
@@ -71,10 +71,10 @@
             this.btnPlay.BackColor = System.Drawing.Color.SeaShell;
             this.btnPlay.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlay.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnPlay.Location = new System.Drawing.Point(274, 163);
-            this.btnPlay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPlay.Location = new System.Drawing.Point(365, 201);
+            this.btnPlay.Margin = new System.Windows.Forms.Padding(5);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(171, 53);
+            this.btnPlay.Size = new System.Drawing.Size(228, 65);
             this.btnPlay.TabIndex = 2;
             this.btnPlay.Text = "PLAY";
             this.btnPlay.UseVisualStyleBackColor = false;
@@ -90,10 +90,9 @@
             this.lblForHighScore.AutoSize = true;
             this.lblForHighScore.BackColor = System.Drawing.Color.Transparent;
             this.lblForHighScore.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblForHighScore.Location = new System.Drawing.Point(9, 7);
-            this.lblForHighScore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblForHighScore.Location = new System.Drawing.Point(12, 9);
             this.lblForHighScore.Name = "lblForHighScore";
-            this.lblForHighScore.Size = new System.Drawing.Size(91, 14);
+            this.lblForHighScore.Size = new System.Drawing.Size(104, 17);
             this.lblForHighScore.TabIndex = 3;
             this.lblForHighScore.Text = "High Score: ";
             // 
@@ -102,10 +101,9 @@
             this.lblHighScore.AutoSize = true;
             this.lblHighScore.BackColor = System.Drawing.Color.Transparent;
             this.lblHighScore.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHighScore.Location = new System.Drawing.Point(82, 7);
-            this.lblHighScore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHighScore.Location = new System.Drawing.Point(109, 9);
             this.lblHighScore.Name = "lblHighScore";
-            this.lblHighScore.Size = new System.Drawing.Size(14, 14);
+            this.lblHighScore.Size = new System.Drawing.Size(16, 17);
             this.lblHighScore.TabIndex = 5;
             this.lblHighScore.Text = "0";
             // 
@@ -113,10 +111,10 @@
             // 
             this.pbPlayer.BackColor = System.Drawing.Color.Transparent;
             this.pbPlayer.Image = global::Runner.Properties.Resources.transparent_runner;
-            this.pbPlayer.Location = new System.Drawing.Point(30, 280);
-            this.pbPlayer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbPlayer.Location = new System.Drawing.Point(40, 345);
+            this.pbPlayer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbPlayer.Name = "pbPlayer";
-            this.pbPlayer.Size = new System.Drawing.Size(66, 98);
+            this.pbPlayer.Size = new System.Drawing.Size(88, 121);
             this.pbPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPlayer.TabIndex = 9;
             this.pbPlayer.TabStop = false;
@@ -126,10 +124,10 @@
             // 
             this.pbFloor2.BackgroundImage = global::Runner.Properties.Resources.platform;
             this.pbFloor2.Image = global::Runner.Properties.Resources.platform;
-            this.pbFloor2.Location = new System.Drawing.Point(452, 378);
-            this.pbFloor2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbFloor2.Location = new System.Drawing.Point(603, 465);
+            this.pbFloor2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbFloor2.Name = "pbFloor2";
-            this.pbFloor2.Size = new System.Drawing.Size(285, 41);
+            this.pbFloor2.Size = new System.Drawing.Size(380, 50);
             this.pbFloor2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbFloor2.TabIndex = 1;
             this.pbFloor2.TabStop = false;
@@ -139,10 +137,9 @@
             this.lblScore.AutoSize = true;
             this.lblScore.BackColor = System.Drawing.Color.Transparent;
             this.lblScore.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore.Location = new System.Drawing.Point(54, 31);
-            this.lblScore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblScore.Location = new System.Drawing.Point(72, 38);
             this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(14, 14);
+            this.lblScore.Size = new System.Drawing.Size(16, 17);
             this.lblScore.TabIndex = 11;
             this.lblScore.Text = "0";
             // 
@@ -151,10 +148,9 @@
             this.lblForScore.AutoSize = true;
             this.lblForScore.BackColor = System.Drawing.Color.Transparent;
             this.lblForScore.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblForScore.Location = new System.Drawing.Point(9, 31);
-            this.lblForScore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblForScore.Location = new System.Drawing.Point(12, 38);
             this.lblForScore.Name = "lblForScore";
-            this.lblForScore.Size = new System.Drawing.Size(56, 14);
+            this.lblForScore.Size = new System.Drawing.Size(64, 17);
             this.lblForScore.TabIndex = 10;
             this.lblForScore.Text = "Score: ";
             // 
@@ -163,10 +159,9 @@
             this.lbForlCenterHighScore.AutoSize = true;
             this.lbForlCenterHighScore.BackColor = System.Drawing.Color.Transparent;
             this.lbForlCenterHighScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbForlCenterHighScore.Location = new System.Drawing.Point(261, 56);
-            this.lbForlCenterHighScore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbForlCenterHighScore.Location = new System.Drawing.Point(348, 69);
             this.lbForlCenterHighScore.Name = "lbForlCenterHighScore";
-            this.lbForlCenterHighScore.Size = new System.Drawing.Size(217, 37);
+            this.lbForlCenterHighScore.Size = new System.Drawing.Size(270, 45);
             this.lbForlCenterHighScore.TabIndex = 12;
             this.lbForlCenterHighScore.Text = "High Score";
             // 
@@ -175,10 +170,9 @@
             this.lblCenterHighScore.AutoSize = true;
             this.lblCenterHighScore.BackColor = System.Drawing.Color.Transparent;
             this.lblCenterHighScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCenterHighScore.Location = new System.Drawing.Point(345, 107);
-            this.lblCenterHighScore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCenterHighScore.Location = new System.Drawing.Point(460, 132);
             this.lblCenterHighScore.Name = "lblCenterHighScore";
-            this.lblCenterHighScore.Size = new System.Drawing.Size(37, 37);
+            this.lblCenterHighScore.Size = new System.Drawing.Size(45, 45);
             this.lblCenterHighScore.TabIndex = 13;
             this.lblCenterHighScore.Text = "0";
             // 
@@ -186,10 +180,10 @@
             // 
             this.pbCoin1.BackColor = System.Drawing.Color.Transparent;
             this.pbCoin1.Image = ((System.Drawing.Image)(resources.GetObject("pbCoin1.Image")));
-            this.pbCoin1.Location = new System.Drawing.Point(356, 219);
-            this.pbCoin1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbCoin1.Location = new System.Drawing.Point(475, 270);
+            this.pbCoin1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbCoin1.Name = "pbCoin1";
-            this.pbCoin1.Size = new System.Drawing.Size(32, 32);
+            this.pbCoin1.Size = new System.Drawing.Size(43, 39);
             this.pbCoin1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCoin1.TabIndex = 14;
             this.pbCoin1.TabStop = false;
@@ -198,10 +192,10 @@
             // 
             this.pbCoin2.BackColor = System.Drawing.Color.Transparent;
             this.pbCoin2.Image = ((System.Drawing.Image)(resources.GetObject("pbCoin2.Image")));
-            this.pbCoin2.Location = new System.Drawing.Point(840, 219);
-            this.pbCoin2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbCoin2.Location = new System.Drawing.Point(1120, 270);
+            this.pbCoin2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbCoin2.Name = "pbCoin2";
-            this.pbCoin2.Size = new System.Drawing.Size(32, 32);
+            this.pbCoin2.Size = new System.Drawing.Size(43, 39);
             this.pbCoin2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCoin2.TabIndex = 15;
             this.pbCoin2.TabStop = false;
@@ -210,10 +204,10 @@
             // 
             this.pbCactus1.BackColor = System.Drawing.Color.Transparent;
             this.pbCactus1.Image = ((System.Drawing.Image)(resources.GetObject("pbCactus1.Image")));
-            this.pbCactus1.Location = new System.Drawing.Point(84, 347);
-            this.pbCactus1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbCactus1.Location = new System.Drawing.Point(112, 427);
+            this.pbCactus1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbCactus1.Name = "pbCactus1";
-            this.pbCactus1.Size = new System.Drawing.Size(20, 31);
+            this.pbCactus1.Size = new System.Drawing.Size(27, 38);
             this.pbCactus1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCactus1.TabIndex = 17;
             this.pbCactus1.TabStop = false;
@@ -223,10 +217,10 @@
             // 
             this.pbCactus2.BackColor = System.Drawing.Color.Transparent;
             this.pbCactus2.Image = ((System.Drawing.Image)(resources.GetObject("pbCactus2.Image")));
-            this.pbCactus2.Location = new System.Drawing.Point(604, 347);
-            this.pbCactus2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbCactus2.Location = new System.Drawing.Point(805, 427);
+            this.pbCactus2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbCactus2.Name = "pbCactus2";
-            this.pbCactus2.Size = new System.Drawing.Size(20, 31);
+            this.pbCactus2.Size = new System.Drawing.Size(27, 38);
             this.pbCactus2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCactus2.TabIndex = 18;
             this.pbCactus2.TabStop = false;
@@ -234,12 +228,11 @@
             // 
             // formRunner
             // 
-            this.AcceptButton = this.btnPlay;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Runner.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(738, 419);
+            this.ClientSize = new System.Drawing.Size(981, 506);
             this.Controls.Add(this.btnPlay);
             this.Controls.Add(this.pbCoin1);
             this.Controls.Add(this.pbCactus2);
@@ -257,10 +250,10 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(754, 458);
-            this.MinimumSize = new System.Drawing.Size(754, 458);
+            this.MaximumSize = new System.Drawing.Size(999, 553);
+            this.MinimumSize = new System.Drawing.Size(999, 553);
             this.Name = "formRunner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Runner";

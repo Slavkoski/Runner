@@ -15,14 +15,17 @@ namespace Runner
 {
     public partial class formRunner : Form
     {
-        public static int MOVE_DISTANCE=11;   
+        public static int MOVE_DISTANCE=7;   
         private bool jump;
         private bool isJumping;
         private bool right;
         private bool gameOver;
         private bool fall;
         private bool decrementFloor;
+        private bool addVelocity;
         private bool pause;
+        private bool isSpace;
+        private bool handled;
         private int flying;
         private int Score;
         private int HighScore;
@@ -46,7 +49,10 @@ namespace Runner
             right = false;
             gameOver = false;
             fall = false;
-            pause = false;
+            pause = true;
+            addVelocity = false;
+            handled = false;
+            isSpace = false;
             flying = 0;
             Score = 0;
             HighScore = 0;
@@ -94,21 +100,36 @@ namespace Runner
 
         private void BtnPlay_Click(object sender, EventArgs e)
         {
-            buttonVisible(false);
-            timer1.Enabled = true;
-            lbForlCenterHighScore.Text = "High Score";
-            pbPlayer.Visible = true;
-            
-            //dokolku ne e pauza znachi e pochetok, skorot=0, kaktusite gi nema itn
-            if (!pause)
+            if (handled)
             {
-                Score = 0;
-                decrementFloor = false;
-                pbCactus1.Visible = false;
-                pbCactus2.Visible = false;
-                cactusShow = false;
+                handled = false;
+                return;
             }
-            pause = false;
+            else
+            {
+                buttonVisible(false);
+                timer1.Enabled = true;
+                lbForlCenterHighScore.Text = "High Score";
+                pbPlayer.Visible = true;
+
+
+                //dokolku ne e pauza znachi e pochetok, skorot=0, kaktusite gi nema itn
+                if ((!pause && !isSpace )|| gameOver)
+                {
+                    Score = 0;
+                    decrementFloor = false;
+                    pbCactus1.Visible = false;
+                    pbCactus2.Visible = false;
+                    cactusShow = false;
+                    isSpace = false;
+                }
+
+               
+                pause = false;
+                fall = false;
+                gameOver = false;
+
+            }
         }
 
         private void PlayAgain()
@@ -126,7 +147,7 @@ namespace Runner
 
             lblHighScore.Text = HighScore.ToString();
 
-            gameOver = false;
+           // gameOver = false;
             flying = 0;
         }
 
@@ -144,8 +165,14 @@ namespace Runner
                 right = true;
                 
             }
-            if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.Up) && jump == false && isJumping == false)
+
+            if (e.KeyCode == Keys.Space && pause || gameOver || fall || isJumping || jump)
             {
+                handled = true;
+            }
+            else if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.Up) && !jump && !isJumping )
+            {
+                isSpace = true;
                 jump = true;
                 isJumping = true;
             }
@@ -202,6 +229,7 @@ namespace Runner
                     )
                 {
                     gameOver = true;
+                    fall = true;
                 }
                 //Ako Cepne cactus game over
                 if (pbCactus2.Visible && pbCoin2.Visible &&
@@ -209,6 +237,7 @@ namespace Runner
                     )
                 {
                     gameOver = true;
+                    fall = true;
                 }
 
                 // Ako isceznalo prviot block dodadi go na location width + dupkata so a sakame
@@ -238,12 +267,16 @@ namespace Runner
 
                 lblScore.Text = Score.ToString();
             }
-            else
+            else if (fall && !gameOver)
             {
                 pbPlayer.Location = new Point(pbPlayer.Location.X, pbPlayer.Location.Y + 8);
-                pbFloor1.Location = new Point(pbFloor1.Location.X - 5, pbFloor1.Location.Y);
-                pbFloor2.Location = new Point(pbFloor2.Location.X - 5, pbFloor2.Location.Y);
-                //Game Over
+                //A povikuvame move right oti samo platformite se mrdat vaka a ne i akktusite i parite
+
+                //pbFloor1.Location = new Point(pbFloor1.Location.X - 5, pbFloor1.Location.Y);
+               // pbFloor2.Location = new Point(pbFloor2.Location.X - 5, pbFloor2.Location.Y);
+                
+               moveRight();
+               //Game Over
                 if (pbPlayer.Location.Y + 120 >= 555)
                 {
                     //Venko: go komentirav kodot dole bidejkji dva pati se pojavuvashe play again
@@ -267,6 +300,8 @@ namespace Runner
 
         public void endGame()
         {
+            gameOver = true;
+            pause = true;
             jump = false;
             isJumping = false;
             timer1.Enabled = false;
@@ -281,7 +316,8 @@ namespace Runner
             }
             lblCenterHighScore.Text = HighScore.ToString();
             buttonVisible(true);
-            fall = false;
+
+            MOVE_DISTANCE = 7;
 
             pbPlayer.Visible = false;
             PlayAgain();
@@ -307,6 +343,7 @@ namespace Runner
                 pbCactus1.Visible = true;
                 pbCactus2.Visible = true;
                 cactusShow = true;
+
             }
 
             //namaluvanje na floor
@@ -321,7 +358,18 @@ namespace Runner
                 decrementFloor = false;
                 pbFloor1.Width -= 3;
                 pbFloor2.Width -= 3;
-                MOVE_DISTANCE += 3;   
+                MOVE_DISTANCE += 1;
+            }
+            //Zgolemuvanje na MOVE_DISTANCE
+            if (Score % 6 == 0 && Score != 0 && !addVelocity && MOVE_DISTANCE <= 11)
+            {
+                addVelocity = true;
+            }
+
+            if (addVelocity && Score % 6 != 0 && MOVE_DISTANCE <= 11)
+            {
+                addVelocity = false;
+                MOVE_DISTANCE += 1;
             }
         }
 
@@ -442,5 +490,6 @@ namespace Runner
             }
 
         }
+
     }
 }
