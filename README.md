@@ -17,7 +17,7 @@
 
 ## Краток опис на играта
 
-Интересна заразна игра каде собираш поени, и постојано пробуваш да го собориш својот рекорд. Играта се состои од стикмен кој собира парички и прескокнува платформи за да не падне. Во текот на играта се појавуваат и кактуси кои треба да ги прескокне за да не заврши играта. Исто така при собирање на повеќе парички платформите почнуваат да се намалуваат се со цел играта да стане потешка.
+Интересна,0+ заразна игра каде собираш поени, и постојано пробуваш да го собориш својот рекорд. Играта се состои од стикмен кој собира парички и прескокнува платформи за да не падне. Во текот на играта се појавуваат и кактуси кои треба да ги прескокне за да не заврши играта. Исто така при собирање на повеќе парички платформите почнуваат да се намалуваат се со цел играта да стане потешка.
 
 ## Упатство за користење
 
@@ -51,7 +51,19 @@
                 decrementFloor = false;
                 pbFloor1.Width -= 3;
                 pbFloor2.Width -= 3;
-                MOVE_DISTANCE += 3;   
+                MOVE_DISTANCE += 1;   
+            }
+            
+            //Zgolemuvanje na MOVE_DISTANCE
+            if (Score % 6 == 0 && Score != 0 && !addVelocity && MOVE_DISTANCE <= 11)
+            {
+                addVelocity = true;
+            }
+
+            if (addVelocity && Score % 6 != 0 && MOVE_DISTANCE <= 11)
+            {
+                addVelocity = false;
+                MOVE_DISTANCE += 1;
             }
         }
   ```  
@@ -59,6 +71,7 @@
   ```C#
 public void moveUp()
         {
+            pbPlayer.Image = PlayerPHOTO;
             pictureBox1.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y - 5);
             flying++;
             if (flying == 15)
@@ -69,6 +82,7 @@ public void moveUp()
 
 public void moveDown()
         {
+            pbPlayer.Image = PlayerPHOTO;
             pictureBox1.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y + 5);
             flying--;
             if (flying == 0)
@@ -84,22 +98,30 @@ public void moveDown()
   ```C#
 public void endGame()
         {
+            timer1.Enabled = false;
+            gameOver = true;
+            pause = true;
             jump = false;
             isJumping = false;
-            timer1.Enabled = false;
-            pictureBoxCactus1.Visible = false;
-            pictureBoxCactus2.Visible = false;
-            btnPlay.Text = "Play Again";
+            pbCactus1.Visible = false;
+            pbCactus2.Visible = false;
+            cactusShow = false;
             if (Score > HighScore)
             {
                 HighScore = Score;
-                lblCenterHighScore.Text = "New High Score!";
+                lbForlCenterHighScore.Text = "New High Score! ";
             }
-            lblCenterScore.Text = HighScore.ToString();
-            buttonVisible(true);
-            fall = false;
+            else
+            {
+                lbForlCenterHighScore.Text = "High Score: " + HighScore.ToString();
+            }
 
-            pictureBox1.Visible = false;
+            //lblCenterHighScore.Text = HighScore.ToString();
+            buttonVisible(true);
+            btnPlay.Text = "Play again";
+            MOVE_DISTANCE = 9;
+
+            pbPlayer.Visible = false;
             PlayAgain();
         }
 ```
@@ -178,7 +200,7 @@ private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         }
   ```
 
-  * Исто така при лоадирање на играта се проверува дали има зачувано **highscore.bin** ако има се превземаат податоците и се прикажува претходниот **high score**.
+  * Исто така при лоадирање на играта се проверува дали има зачувано **highscore.bin**, ако има се превземаат податоците и се прикажува претходниот **high score**.
   ```C#
 private void Form1_Load(object sender, EventArgs e)
         {
