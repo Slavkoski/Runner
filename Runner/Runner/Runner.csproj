@@ -93,6 +93,7 @@
     <Content Include="images\logo.png" />
     <Content Include="images\platform.png" />
     <Content Include="images\transparent_cactus.gif" />
+    <Content Include="images\transparent_stickman.gif" />
     <Content Include="logo.png" />
     <None Include="Resources\background_pause.png" />
     <None Include="images\transparent_wave.gif" />

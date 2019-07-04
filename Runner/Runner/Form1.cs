@@ -10,6 +10,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Runner
 {
@@ -31,7 +32,10 @@ namespace Runner
         private int HighScore;
         private static int floorWidth;
         public bool cactusShow;
+        public string stickmanWave;
+        public string stickmanRunning;
 
+        public int stickmanWaiting;
         //sliki za pozadini za pause i play
         Image BackgroundPHOTO;
         Image BackgroundPausePHOTO;
@@ -81,6 +85,11 @@ namespace Runner
             Console.WriteLine(FolderPath);
             SerializationPath = Path.Combine(FolderPath, "highscore.bin");
             Console.WriteLine(SerializationPath);
+            stickmanWaiting = 0;
+
+            stickmanRunning = "C:\\Users\\risto\\source\\repos\\Runner\\Runner\\Runner\\images\\transparent_runner.gif";
+            stickmanWave = "C:\\Users\\risto\\source\\repos\\Runner\\Runner\\Runner\\images\\transparent_stickman.gif";
+
         }
 
         // Menuvanje na kopcinjata za vidlivost 
@@ -164,8 +173,12 @@ namespace Runner
             pbFloor1.Width = floorWidth;
             pbFloor2.Width = floorWidth;
 
-            lblHighScore.Text = HighScore.ToString();
+            pbPlayer.ImageLocation = stickmanWave;
 
+            MOVE_DISTANCE = 7;
+
+            lblHighScore.Text = HighScore.ToString();
+            handled = true;
             flying = 0;
         }
 
@@ -175,22 +188,33 @@ namespace Runner
             
             if (e.KeyData == Keys.P || e.KeyData == Keys.Escape)
             {
+                
                 pause = true;
                 timer1.Enabled = false;
                 buttonVisible(true);
-                handled = false;
+                handled = true;
             }
             else if (e.KeyCode == Keys.Right)
             {
+                if (stickmanWaiting != 0 && pbPlayer.ImageLocation != stickmanRunning)
+                {
+                    pbPlayer.ImageLocation = stickmanRunning;
+                }
+                stickmanWaiting = 0;
                 right = true;
             }
 
-            if (e.KeyCode == Keys.Space && pause  || gameOver || fall || isJumping || jump)
+            if (e.KeyCode == Keys.Space && (pause  || gameOver || fall || isJumping || jump))
             {
                handled = true;
             }
-            else if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.Up) && !jump && !isJumping )
+            else if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.Up) && !jump && !isJumping && !handled)
             {
+                if (stickmanWaiting != 0 && pbPlayer.ImageLocation != stickmanRunning)
+                {
+                    pbPlayer.ImageLocation = stickmanRunning;
+                }
+                stickmanWaiting = 0;
                 isSpace = true;
                 jump = true;
                 isJumping = true;
@@ -209,6 +233,7 @@ namespace Runner
             }
             if (!fall)
             {
+              
                 // Ako imame straknato space neka leta
                 if (jump && flying < 15)
                 {
@@ -225,6 +250,14 @@ namespace Runner
                 if (right)
                 {
                     moveRight();
+                }
+                else
+                {
+                    stickmanWaiting++;
+                    if (stickmanWaiting == 7)
+                    {
+                        pbPlayer.ImageLocation = stickmanWave;
+                    }
                 }
                 // Ako a fanime prvata para
 
@@ -243,22 +276,22 @@ namespace Runner
 
 
                 //Ako Cepne cactus game over
-                if (pbCactus1.Visible && pbCoin1.Visible
+                if ((pbCactus1.Visible && pbCoin1.Visible
                                               && 
-                                              isTouching(pbPlayer.Location, pbCactus1.Location)
-                    )
+                                              isTouching(pbPlayer.Location, pbCactus1.Location )) || (pbCactus2.Visible && pbCoin2.Visible &&
+                                                                                                     isTouching(pbPlayer.Location, pbCactus2.Location)))
                 {
                     gameOver = true;
                     fall = true;
                 }
                 //Ako Cepne cactus game over
-                if (pbCactus2.Visible && pbCoin2.Visible &&
-                        isTouching(pbPlayer.Location, pbCactus2.Location)
-                    )
-                {
-                    gameOver = true;
-                    fall = true;
-                }
+          //      if (pbCactus2.Visible && pbCoin2.Visible &&
+            //            isTouching(pbPlayer.Location, pbCactus2.Location)
+              //      )
+                //{
+                  //  gameOver = true;
+                    //fall = true;
+                //}
 
                 // Ako isceznalo prviot block dodadi go na location width + dupkata so a sakame
                 if (pbFloor1.Location.X < -pbFloor1.Width)
@@ -291,11 +324,11 @@ namespace Runner
             {
                 pbPlayer.Location = new Point(pbPlayer.Location.X, pbPlayer.Location.Y + 8);
                 //A povikuvame move right oti samo platformite se mrdat vaka a ne i akktusite i parite
-
+                moveRight();
                 //pbFloor1.Location = new Point(pbFloor1.Location.X - 5, pbFloor1.Location.Y);
                // pbFloor2.Location = new Point(pbFloor2.Location.X - 5, pbFloor2.Location.Y);
                 
-               moveRight();
+               
                //Game Over
                 if (pbPlayer.Location.Y + 120 >= 555)
                 {
@@ -316,6 +349,7 @@ namespace Runner
                     //fall = false;
                     gameOver = true;
                     handled = false;
+
                 }
             }
         }

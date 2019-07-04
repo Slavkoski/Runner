@@ -113,7 +113,7 @@
             // pbPlayer
             // 
             this.pbPlayer.BackColor = System.Drawing.Color.Transparent;
-            this.pbPlayer.Image = global::Runner.Properties.Resources.transparent_runner;
+            this.pbPlayer.Image = global::Runner.Properties.Resources.transparent_stickman;
             this.pbPlayer.Location = new System.Drawing.Point(40, 345);
             this.pbPlayer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbPlayer.Name = "pbPlayer";
