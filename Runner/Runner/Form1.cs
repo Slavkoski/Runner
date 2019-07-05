@@ -140,12 +140,14 @@ namespace Runner
                 pbCactus2.Visible = !visible;
             }
 
-          // dokolku e pauza se menuvaat pozadinite
-          if (visible)
-           {
+            // dokolku e pauza se menuvaat pozadinite
+
+
+            if (visible)
+          {
                this.BackgroundImage = BackgroundPausePHOTO;
                btnPlay.Text = "Continue";
-           }
+          }
             else
             {
                 if (midnight)
@@ -203,17 +205,20 @@ namespace Runner
             pbCactus2.Location = new Point(pbFloor2.Location.X + pbFloor1.Width / 2, MaximumSize.Height - 103);
             pbCoin1.Location = new Point(pbFloor1.Location.X + pbFloor1.Width + 100, MaximumSize.Height - 230);
             pbCoin2.Location = new Point(pbFloor2.Location.X + pbFloor2.Width + 100, MaximumSize.Height - 230);
-            this.BackgroundImage = BackgroundPHOTO;
+
             pbFloor1.Width = floorWidth;
             pbFloor2.Width = floorWidth;
 
             pbPlayer.Image = PlayerStandsPHOTO;
-            BackgroundImage = BackgroundPHOTO;
+           // BackgroundImage = BackgroundPHOTO;
+
+            midnight = false;
+            day = true;
 
             MOVE_DISTANCE = 9;
 
             lblHighScore.Text = HighScore.ToString();
-           // handled = true;
+            handled = true;
             flying = 0;
         }
 
@@ -449,16 +454,28 @@ namespace Runner
                     pbCoin1.Visible = true;
                 }
 
-                if (!isJumping &&
-                    !isOverlap(pbPlayer.Location, pbPlayer.Width, pbPlayer.Height, pbFloor1.Location, pbFloor1.Width,
-                        pbFloor1.Height) &&
-                    !isOverlap(pbPlayer.Location, pbPlayer.Width, pbPlayer.Height, pbFloor2.Location, pbFloor2.Width,
-                        pbFloor2.Height) ||
-                    pbFloor1.Location.X + pbFloor1.Width < pbPlayer.Location.X + 30 && !isJumping ||
-                    pbFloor2.Location.X + pbFloor2.Width < pbPlayer.Location.X + 30 && !isJumping)
+                //za koga pagja
+                
+                if (!isJumping && !jump && !(pbPlayer.Location.X  >=  pbFloor1.Location.X && pbPlayer.Location.X + 10 <= pbFloor1.Location.X + pbFloor1.Width) &&
+                    !(pbPlayer.Location.X + pbPlayer.Width - 10 >= pbFloor1.Location.X && pbPlayer.Location.X + pbPlayer.Width - 15 <= pbFloor1.Location.X + pbFloor1.Width) &&
+                    !(pbPlayer.Location.X >= pbFloor2.Location.X && pbPlayer.Location.X + 10 <= pbFloor2.Location.X + pbFloor2.Width) &&
+                    !(pbPlayer.Location.X + pbPlayer.Width - 10 >= pbFloor2.Location.X && pbPlayer.Location.X + pbPlayer.Width - 15 <= pbFloor2.Location.X + pbFloor2.Width)
+
+                    )
                 {
                     fall = true;
                 }
+
+               // if (!isJumping &&
+                  //  !isOverlap(pbPlayer.Location, pbPlayer.Width, pbPlayer.Height, pbFloor1.Location, pbFloor1.Width,
+                  //      pbFloor1.Height) &&
+                  //  !isOverlap(pbPlayer.Location, pbPlayer.Width, pbPlayer.Height, pbFloor2.Location, pbFloor2.Width,
+                  //      pbFloor2.Height) ||
+                 //   pbFloor1.Location.X + pbFloor1.Width < pbPlayer.Location.X + 30 && !isJumping ||
+                 //   pbFloor2.Location.X + pbFloor2.Width < pbPlayer.Location.X + 30 && !isJumping)
+             //   {
+            //        fall = true;
+             //   }
 
                 lblScore.Text = lblCurrentScore.Text = Score.ToString();
             }
