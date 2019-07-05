@@ -43,6 +43,8 @@ namespace Runner
         Image PlayerPHOTO;
         Image PlayerStandsPHOTO;
         Image BackgroundNightPHOTO;
+        Image SoundOn;
+        Image SoundOff;
         SoundPlayer soundPlayer;
 
         //Serialization
@@ -95,11 +97,21 @@ namespace Runner
             Console.WriteLine(FolderPath);
             SerializationPath = Path.Combine(FolderPath, "highscore.bin");
             Console.WriteLine(SerializationPath);
-            stickmanWaiting = 0;
+
+
+            //MUSIC
             soundPlayer = new SoundPlayer(Properties.Resources.Jamiroquai___Cloud_9__Purple_Disco_Machine_Remix_);
             soundPlayer.PlayLooping();
+            SoundOn = global::Runner.Properties.Resources.sound;
+            SoundOff = global::Runner.Properties.Resources.Mute;
+            pbSound.Image = SoundOn;
+
+
+            //Player
             PlayerPHOTO = global::Runner.Properties.Resources.transparent_runner;
             PlayerStandsPHOTO = global::Runner.Properties.Resources.transparent_stickman;
+            stickmanWaiting = 0;
+
         }
 
         // Menuvanje na kopcinjata za vidlivost 
@@ -237,6 +249,11 @@ namespace Runner
                 handled = false;
             }
 
+            if (e.KeyCode == Keys.M)
+            {
+                changeSound();
+            }
+
 
             if (e.KeyCode != Keys.Space)
             {
@@ -303,6 +320,8 @@ namespace Runner
         private void timer1_Tick(object sender, EventArgs e)
         {
             Invalidate(true);
+
+
             //pbPlayer.Location = player.center;
             // Ako pagja nadole da nemoze da se kace tuku da padne
             if (gameOver)
@@ -559,7 +578,7 @@ namespace Runner
 
         public void moveDown()
         {
-            pbPlayer.Image = PlayerPHOTO;
+           // pbPlayer.Image = PlayerPHOTO;
             pbPlayer.Location = new Point(pbPlayer.Location.X, pbPlayer.Location.Y + 5);
             flying--;
             if (flying == 0)
@@ -665,6 +684,26 @@ namespace Runner
                 e.Cancel = true;
             }
 
+        }
+
+        public void changeSound()
+        {
+            if (pbSound.Image == SoundOn)
+            {
+                pbSound.Image = SoundOff;
+                soundPlayer.Stop();
+                soundPlayer.Load();
+            }
+            else
+            {
+                pbSound.Image = SoundOn;
+                soundPlayer.Play();
+            }
+        }
+
+        private void PbSound_Click(object sender, EventArgs e)
+        {
+            changeSound();
         }
     }
 

@@ -47,6 +47,7 @@
             this.lblKontroli = new System.Windows.Forms.Label();
             this.lblForCurrentScore = new System.Windows.Forms.Label();
             this.lblCurrentScore = new System.Windows.Forms.Label();
+            this.pbSound = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbFloor1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFloor2)).BeginInit();
@@ -54,6 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbCoin2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCactus1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCactus2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSound)).BeginInit();
             this.SuspendLayout();
             // 
             // pbFloor1
@@ -73,7 +75,7 @@
             this.btnPlay.BackColor = System.Drawing.Color.SeaShell;
             this.btnPlay.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlay.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnPlay.Location = new System.Drawing.Point(375, 211);
+            this.btnPlay.Location = new System.Drawing.Point(375, 173);
             this.btnPlay.Margin = new System.Windows.Forms.Padding(5);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(228, 65);
@@ -221,13 +223,14 @@
             // 
             this.lblKontroli.AutoSize = true;
             this.lblKontroli.BackColor = System.Drawing.Color.Transparent;
-            this.lblKontroli.Font = new System.Drawing.Font("Segoe Print", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKontroli.Location = new System.Drawing.Point(350, 281);
+            this.lblKontroli.Font = new System.Drawing.Font("Segoe Print", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKontroli.Location = new System.Drawing.Point(350, 231);
             this.lblKontroli.Name = "lblKontroli";
-            this.lblKontroli.Size = new System.Drawing.Size(253, 120);
+            this.lblKontroli.Size = new System.Drawing.Size(276, 182);
             this.lblKontroli.TabIndex = 19;
             this.lblKontroli.Text = "How to play?\r\nPress Esc or P for Pause\r\nPress Space or Up for jump\r\nPress Right t" +
-    "o move\r\n";
+    "o move\r\nDouble Enter to start the game\r\nPress R to restore your High Score\r\nPres" +
+    "s M  for sound On/Off";
             this.lblKontroli.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblForCurrentScore
@@ -235,7 +238,7 @@
             this.lblForCurrentScore.AutoSize = true;
             this.lblForCurrentScore.BackColor = System.Drawing.Color.Transparent;
             this.lblForCurrentScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblForCurrentScore.Location = new System.Drawing.Point(207, 118);
+            this.lblForCurrentScore.Location = new System.Drawing.Point(209, 103);
             this.lblForCurrentScore.Name = "lblForCurrentScore";
             this.lblForCurrentScore.Size = new System.Drawing.Size(495, 45);
             this.lblForCurrentScore.TabIndex = 22;
@@ -246,11 +249,24 @@
             this.lblCurrentScore.AutoSize = true;
             this.lblCurrentScore.BackColor = System.Drawing.Color.Transparent;
             this.lblCurrentScore.Font = new System.Drawing.Font("Courier New", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentScore.Location = new System.Drawing.Point(727, 118);
+            this.lblCurrentScore.Location = new System.Drawing.Point(729, 103);
             this.lblCurrentScore.Name = "lblCurrentScore";
             this.lblCurrentScore.Size = new System.Drawing.Size(45, 45);
             this.lblCurrentScore.TabIndex = 23;
             this.lblCurrentScore.Text = "0";
+            // 
+            // pbSound
+            // 
+            this.pbSound.BackColor = System.Drawing.Color.Transparent;
+            this.pbSound.Image = global::Runner.Properties.Resources.sound;
+            this.pbSound.Location = new System.Drawing.Point(922, 9);
+            this.pbSound.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbSound.Name = "pbSound";
+            this.pbSound.Size = new System.Drawing.Size(47, 32);
+            this.pbSound.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbSound.TabIndex = 24;
+            this.pbSound.TabStop = false;
+            this.pbSound.Click += new System.EventHandler(this.PbSound_Click);
             // 
             // formRunner
             // 
@@ -260,6 +276,7 @@
             this.BackgroundImage = global::Runner.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(981, 506);
+            this.Controls.Add(this.pbSound);
             this.Controls.Add(this.lblCurrentScore);
             this.Controls.Add(this.lblForCurrentScore);
             this.Controls.Add(this.lblKontroli);
@@ -297,6 +314,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbCoin2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCactus1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCactus2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSound)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,6 +339,7 @@
         private System.Windows.Forms.Label lblKontroli;
         private System.Windows.Forms.Label lblForCurrentScore;
         private System.Windows.Forms.Label lblCurrentScore;
+        private System.Windows.Forms.PictureBox pbSound;
     }
 }
 

@@ -95,6 +95,8 @@
     <Content Include="images\transparent_cactus.gif" />
     <Content Include="images\transparent_stickman.gif" />
     <Content Include="logo.png" />
+    <None Include="Resources\sound.png" />
+    <None Include="Resources\Mute.png" />
     <None Include="Resources\Jamiroquai - Cloud 9 %28Purple Disco Machine Remix%29.wav" />
     <None Include="Resources\background_night.png" />
     <None Include="Resources\transparent_stickman.gif" />
