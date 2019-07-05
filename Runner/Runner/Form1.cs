@@ -33,7 +33,7 @@ namespace Runner
         private int HighScore;
         private static int floorWidth;
         public bool cactusShow;
-
+        public bool day;
         public int stickmanWaiting;
 
         //sliki za pozadini za pause i play
@@ -41,6 +41,7 @@ namespace Runner
         Image BackgroundPausePHOTO;
         Image PlayerPHOTO;
         Image PlayerStandsPHOTO;
+        Image BackgroundNightPHOTO;
 
         //Serialization
         private string SerializationPath;
@@ -82,6 +83,10 @@ namespace Runner
             this.BackgroundImage = BackgroundPausePHOTO;
 
             floorWidth = pbFloor1.Width;
+
+            day = true;
+            BackgroundNightPHOTO = global::Runner.Properties.Resources.background_night;
+
 
             // Serialization
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Runner Game");
@@ -125,7 +130,10 @@ namespace Runner
             }
             else
             {
-                this.BackgroundImage = BackgroundPHOTO;
+                if (day)
+                    BackgroundImage = BackgroundPHOTO;
+                else
+                    BackgroundImage = BackgroundNightPHOTO;
             }
 
         }
@@ -172,7 +180,7 @@ namespace Runner
             pbCactus2.Location = new Point(pbFloor2.Location.X + pbFloor1.Width / 2, MaximumSize.Height - 103);
             pbCoin1.Location = new Point(pbFloor1.Location.X + pbFloor1.Width + 100, MaximumSize.Height - 230);
             pbCoin2.Location = new Point(pbFloor2.Location.X + pbFloor2.Width + 100, MaximumSize.Height - 230);
-
+            this.BackgroundImage = BackgroundPHOTO;
             pbFloor1.Width = floorWidth;
             pbFloor2.Width = floorWidth;
 
@@ -334,6 +342,19 @@ namespace Runner
                 {
                     Score++;
                     pbCoin1.Visible = false;
+                    if (Score % 15 == 0 && Score != 0)
+                    {
+                        if (BackgroundImage == BackgroundPHOTO)
+                        {
+                            BackgroundImage = BackgroundNightPHOTO;
+                            day = false;
+                        }
+                        else
+                        {
+                            BackgroundImage = BackgroundPHOTO;
+                            day = true;
+                        }
+                    }
                 }
 
                 // Ako a fanime vtorata para
@@ -342,6 +363,19 @@ namespace Runner
                 {
                     Score++;
                     pbCoin2.Visible = false;
+                    if (Score % 15 == 0 && Score != 0)
+                    {
+                        if (BackgroundImage == BackgroundPHOTO)
+                        {
+                            BackgroundImage = BackgroundNightPHOTO;
+                            day = false;
+                        }
+                        else
+                        {
+                            BackgroundImage = BackgroundPHOTO;
+                            day = true;
+                        }
+                    }
                 }
 
 
