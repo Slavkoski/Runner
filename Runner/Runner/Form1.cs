@@ -6,6 +6,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -42,6 +43,7 @@ namespace Runner
         Image PlayerPHOTO;
         Image PlayerStandsPHOTO;
         Image BackgroundNightPHOTO;
+        SoundPlayer soundPlayer;
 
         //Serialization
         private string SerializationPath;
@@ -94,7 +96,8 @@ namespace Runner
             SerializationPath = Path.Combine(FolderPath, "highscore.bin");
             Console.WriteLine(SerializationPath);
             stickmanWaiting = 0;
-
+            soundPlayer = new SoundPlayer(Properties.Resources.Jamiroquai___Cloud_9__Purple_Disco_Machine_Remix_);
+            soundPlayer.PlayLooping();
             PlayerPHOTO = global::Runner.Properties.Resources.transparent_runner;
             PlayerStandsPHOTO = global::Runner.Properties.Resources.transparent_stickman;
         }
