@@ -428,14 +428,7 @@ namespace Runner
                     gameOver = true;
                     fall = true;
                 }
-                //Ako Cepne cactus game over
-                //      if (pbCactus2.Visible && pbCoin2.Visible &&
-                //            isTouching(pbPlayer.Location, pbCactus2.Location)
-                //      )
-                //{
-                //  gameOver = true;
-                //fall = true;
-                //}
+              
 
                 // Ako isceznalo prviot block dodadi go na location width + dupkata so a sakame
                 if (pbFloor1.Location.X < -pbFloor1.Width)
@@ -484,28 +477,11 @@ namespace Runner
                 pbPlayer.Location = new Point(pbPlayer.Location.X, pbPlayer.Location.Y + 8);
                 //A povikuvame move right oti samo platformite se mrdat vaka a ne i akktusite i parite
                 moveRight();
-                //pbFloor1.Location = new Point(pbFloor1.Location.X - 5, pbFloor1.Location.Y);
-                // pbFloor2.Location = new Point(pbFloor2.Location.X - 5, pbFloor2.Location.Y);
-
 
                 //Game Over
                 if (pbPlayer.Location.Y + 120 >= 555)
                 {
-                    //Venko: go komentirav kodot dole bidejkji dva pati se pojavuvashe play again
-                    // vaka se pojavuva samo ednash no kodot e ostaven zakomentiran za da ne izleze nekoj problem   
-                    //endGame();
-
-                    //timer1.Enabled = false;
-                    //btnPlay.Text = "Play Again";
-                    //if (Score > HighScore)
-                    //{
-                    //    HighScore = Score;
-                    //    lbForlCenterHighScore.Text = "New High Score!";
-                    //}
-                    //lblCenterHighScore.Text = HighScore.ToString();
-                    //Score = 0;
-                    //buttonVisible(true);
-                    //fall = false;
+                   
                     gameOver = true;
                     handled = false;
 

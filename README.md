@@ -17,16 +17,17 @@
 
 ## Краток опис на играта
 
-Интересна,0+ заразна игра каде собираш поени, и постојано пробуваш да го собориш својот рекорд. Играта се состои од стикмен кој собира парички и прескокнува платформи за да не падне. Во текот на играта се појавуваат и кактуси кои треба да ги прескокне за да не заврши играта. Исто така при собирање на повеќе парички платформите почнуваат да се намалуваат се со цел играта да стане потешка.
+Интересна,0+ заразна игра каде собираш поени, и постојано пробуваш да го собориш својот рекорд. Играта се состои од стикмен кој собира парички и прескокнува платформи за да не падне. Во текот на играта се појавуваат и кактуси кои треба да ги прескокне за да не заврши играта. Исто така при собирање на повеќе парички платформите почнуваат да се намалуваат се со цел играта да стане потешка. Во текот на играта позадинската боја се менува од ден во ноќ и обратно. При самото уклучување на играта автоматски се пушта песна која може да биде сопрена при притискање на копчето за звук или при притискање на М буквата од тастатура.
 
 ## Упатство за користење
 
-Човекот кој треба да го придвижуваш се придвижува при притискање на стрелката надесно, а за скокање се користи стрелката нагоре или Space копчето. Исто така, додека човекот е во скок, обидот за повторно скокање ќе биде неуспешен со цел да не лета во воздухот. Секогаш ќе може да скока само ако е на платформата.
+Човекот кој треба да го придвижуваш се придвижува при притискање на стрелката надесно, а за скокање се користи **стрелката нагоре** или **Space** копчето. Исто така, додека човекот е во скок, обидот за повторно скокање ќе биде неуспешен со цел да не лета во воздухот. Секогаш ќе може да скока само ако е на платформата. Со притискање на **Esc** или на **P** играта се паузира и со двојно притискање на **Enter** или на со маусот на копчето **Play** повторно продожува играта. Доколку сме на пауза и притиснеме **R** тогаш се појавува дијалог дали сакаме да го рестаритраме **High Score**. Со притискање на копчето **М** музиката која во позадина е пуштена со стопира/пушта.
 
 ## Дел од проблемите и дел од кодот
 
   * При притискање на копчето за придвижување надесно, ја повикуваме функцијата за придвижување, така што ги придвижуваме сите објекти освен човекот, со што добиваме виртуелно трчање на човекот. Исто така во оваа функција кога ќе достигнеме 6 парички ги прикажуваме кактусите, а на секои 9 парички ja намалуваме големината на платформата и ја зголемуваме брзината на движење со цел играта да стане потешка.
-  ```C# public void moveRight()
+  ```C#
+public void moveRight()
         {
             pbFloor1.Location = new Point(pbFloor1.Location.X - MOVE_DISTANCE, pbFloor1.Location.Y);
             pbFloor2.Location = new Point(pbFloor2.Location.X - MOVE_DISTANCE, pbFloor2.Location.Y);
@@ -39,7 +40,10 @@
                 pbCactus1.Visible = true;
                 pbCactus2.Visible = true;
                 cactusShow = true;
+
             }
+
+            //namaluvanje na floor
 
             if (Score % 9 == 0 && Score != 0 && !decrementFloor)
             {
@@ -51,9 +55,9 @@
                 decrementFloor = false;
                 pbFloor1.Width -= 3;
                 pbFloor2.Width -= 3;
-                MOVE_DISTANCE += 1;   
+                MOVE_DISTANCE += 1;
             }
-            
+
             //Zgolemuvanje na MOVE_DISTANCE
             if (Score % 6 == 0 && Score != 0 && !addVelocity && MOVE_DISTANCE <= 11)
             {
@@ -72,7 +76,7 @@
 public void moveUp()
         {
             pbPlayer.Image = PlayerPHOTO;
-            pictureBox1.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y - 5);
+            pbPlayer.Location = new Point(pbPlayer.Location.X, pbPlayer.Location.Y - 5);
             flying++;
             if (flying == 15)
             {
@@ -82,8 +86,8 @@ public void moveUp()
 
 public void moveDown()
         {
-            pbPlayer.Image = PlayerPHOTO;
-            pictureBox1.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y + 5);
+           // pbPlayer.Image = PlayerPHOTO;
+            pbPlayer.Location = new Point(pbPlayer.Location.X, pbPlayer.Location.Y + 5);
             flying--;
             if (flying == 0)
             {
@@ -129,22 +133,21 @@ public void endGame()
 * Проблемот за бесконечно појавување на платформата за трчање е решен така што кога човекот прескокнува дупка платформата позади него се губи, но на одредена далечина се појавува нова платформа.
 
 ```C#
- 
-if (floor.Location.X < -floor.Width)
-        {
-            floor.Location = new Point(floor2.Location.X + 200 + floor2.Width, floor2.Location.Y);
-            pictureBoxCoin2.Location = new Point(floor.Location.X - 100, pictureBoxCoin2.Location.Y);
-            pictureBoxCactus1.Location = new Point(floor.Location.X + (floor.Width / 2), pictureBoxCactus1.Location.Y);
-            pictureBoxCoin2.Visible = true;
-        }
+ if (pbFloor1.Location.X < -pbFloor1.Width)
+                {
+                    pbFloor1.Location = new Point(pbFloor2.Location.X + 200 + pbFloor2.Width, pbFloor2.Location.Y);
+                    pbCoin2.Location = new Point(pbFloor1.Location.X - 100, pbCoin2.Location.Y);
+                    pbCactus1.Location = new Point(pbFloor1.Location.X + (pbFloor1.Width / 2), pbCactus1.Location.Y);
+                    pbCoin2.Visible = true;
+                }
 
-        if (floor2.Location.X < -floor2.Width)
-        {
-        	floor2.Location = new Point(floor.Location.X + 200 + floor.Width, floor.Location.Y);
-            pictureBoxCoin1.Location = new Point(floor2.Location.X - 100, pictureBoxCoin1.Location.Y);
-            pictureBoxCactus2.Location = new Point(floor2.Location.X + (floor2.Width / 2), pictureBoxCactus2.Location.Y);
-            pictureBoxCoin1.Visible = true;
-        }
+                if (pbFloor2.Location.X < -pbFloor2.Width)
+                {
+                    pbFloor2.Location = new Point(pbFloor1.Location.X + 200 + pbFloor1.Width, pbFloor1.Location.Y);
+                    pbCoin1.Location = new Point(pbFloor2.Location.X - 100, pbCoin1.Location.Y);
+                    pbCactus2.Location = new Point(pbFloor2.Location.X + (pbFloor2.Width / 2), pbCactus2.Location.Y);
+                    pbCoin1.Visible = true;
+                }
   ```
   * При затварање на играта со отвара конфирмациски диалог со прашање дали сте сигурни дека сакате да се исклучи играта. Автоматски кај секој корисник во **Documents** се зачувува **High Score**, но фајлот е скриен (hidden) за да неможе да го примети секој.
   ```C#
