@@ -35,6 +35,7 @@ namespace Runner
         private static int floorWidth;
         public bool cactusShow;
         public bool day;
+        public bool midnight;
         public int stickmanWaiting;
 
         //sliki za pozadini za pause i play
@@ -43,6 +44,7 @@ namespace Runner
         Image PlayerPHOTO;
         Image PlayerStandsPHOTO;
         Image BackgroundNightPHOTO;
+        Image BackgroundMidNightPHOTO;
         Image SoundOn;
         Image SoundOff;
         SoundPlayer soundPlayer;
@@ -81,7 +83,9 @@ namespace Runner
             lblForHighScore.Visible = false;
             lblForCurrentScore.Visible = false;
             lblCurrentScore.Visible = false;
-
+            //Background photo
+            BackgroundNightPHOTO = global::Runner.Properties.Resources.background_night;
+            BackgroundMidNightPHOTO= global::Runner.Properties.Resources.background_midnight;
             BackgroundPausePHOTO = global::Runner.Properties.Resources.background_pause;
             BackgroundPHOTO = global::Runner.Properties.Resources.background;
             this.BackgroundImage = BackgroundPausePHOTO;
@@ -89,8 +93,7 @@ namespace Runner
             floorWidth = pbFloor1.Width;
 
             day = true;
-            BackgroundNightPHOTO = global::Runner.Properties.Resources.background_night;
-
+            midnight = false;
 
             // Serialization
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Runner Game");
@@ -137,15 +140,19 @@ namespace Runner
                 pbCactus2.Visible = !visible;
             }
 
-            // dokolku e pauza se menuvaat pozadinite
-            if (visible)
-            {
-                this.BackgroundImage = BackgroundPausePHOTO;
-                btnPlay.Text = "Continue";
-            }
+          // dokolku e pauza se menuvaat pozadinite
+          if (visible)
+           {
+               this.BackgroundImage = BackgroundPausePHOTO;
+               btnPlay.Text = "Continue";
+           }
             else
             {
-                if (day)
+                if (midnight)
+                {
+                    BackgroundImage = BackgroundMidNightPHOTO;
+                }
+                else if (day)
                     BackgroundImage = BackgroundPHOTO;
                 else
                     BackgroundImage = BackgroundNightPHOTO;
@@ -177,6 +184,7 @@ namespace Runner
                     pbCactus2.Visible = false;
                     cactusShow = false;
                     isSpace = false;
+                    BackgroundImage = BackgroundPHOTO;
                 }
 
                 pause = false;
@@ -200,6 +208,7 @@ namespace Runner
             pbFloor2.Width = floorWidth;
 
             pbPlayer.Image = PlayerStandsPHOTO;
+            BackgroundImage = BackgroundPHOTO;
 
             MOVE_DISTANCE = 9;
 
@@ -312,8 +321,6 @@ namespace Runner
                 }
 
 
-
-
             }
         }
 
@@ -364,19 +371,7 @@ namespace Runner
                 {
                     Score++;
                     pbCoin1.Visible = false;
-                    if (Score % 15 == 0 && Score != 0)
-                    {
-                        if (BackgroundImage == BackgroundPHOTO)
-                        {
-                            BackgroundImage = BackgroundNightPHOTO;
-                            day = false;
-                        }
-                        else
-                        {
-                            BackgroundImage = BackgroundPHOTO;
-                            day = true;
-                        }
-                    }
+                   
                 }
 
                 // Ako a fanime vtorata para
@@ -385,22 +380,38 @@ namespace Runner
                 {
                     Score++;
                     pbCoin2.Visible = false;
-                    if (Score % 15 == 0 && Score != 0)
+                }
+                // Change background
+                if (Score % 10 == 0 && Score % 15 != 0 && Score != 0 && BackgroundImage != BackgroundMidNightPHOTO)
+                {
+                    if (BackgroundImage == BackgroundPHOTO)
                     {
-                        if (BackgroundImage == BackgroundPHOTO)
-                        {
-                            BackgroundImage = BackgroundNightPHOTO;
-                            day = false;
-                        }
-                        else
-                        {
-                            BackgroundImage = BackgroundPHOTO;
-                            day = true;
-                        }
+                        day = true;
                     }
+                    else
+                    {
+                        day = false;
+                    }
+
+                    midnight = true;
+                    BackgroundImage = BackgroundMidNightPHOTO;
+
+                }
+                if (Score % 15 == 0 && Score != 0)
+                {
+                    if (day)
+                    {
+                        BackgroundImage = BackgroundNightPHOTO;
+                    }
+                    else
+                    {
+                        BackgroundImage = BackgroundPHOTO;
+                    }
+                    
+                    midnight = false;
                 }
 
-
+              
 
                 //Ako Cepne cactus game over
                 if ((pbCactus1.Visible && pbCoin1.Visible

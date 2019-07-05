@@ -73,6 +73,16 @@ namespace Runner.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background_midnight {
+            get {
+                object obj = ResourceManager.GetObject("background_midnight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap background_night {
             get {
                 object obj = ResourceManager.GetObject("background_night", resourceCulture);
